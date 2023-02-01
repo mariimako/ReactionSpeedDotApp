@@ -1,5 +1,5 @@
 
-# Idea 2: Survival Dot
+# Survival Dot
 
 ## A simple but fun to play endless survival game!
 
