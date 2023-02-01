@@ -1,7 +1,7 @@
 
 # Idea 2: Survival Dot
 
-## A simple but fun to play endless survival gamw!
+## A simple but fun to play endless survival game!
 
 This project is a **2D survival game**. The player will be controlling a single character to move around and dodge
 projectiles, eliminate enemies, gain and upgrade weapons and try to reach a high score. As the game progresses, enemies
