@@ -17,4 +17,9 @@ The following will be some characteristics of the game:
 - Players can pick up random weapons around the map
 - Saving and loading the game should be possible, along with resetting and storing highscores
 - Enemies will vary, with different damage outputs, hitpoints and speed to reach player
+## User Stories
+- As a user, I want to be able to move myself in the game as a character
+- As a user, I want to have enemies to eliminate
+- As a user, I want to keep track of my score
+- As a user, I want to be able to save and load the game
 
