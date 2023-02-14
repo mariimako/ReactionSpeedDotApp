@@ -8,7 +8,7 @@ public class Player extends Being {
     protected int health; // remaining health of player
 
     /*
-     * EFFECTS: player is initialized at the initial position of x and y, with 100 health
+     * EFFECTS: player is initialized at the initial position in the middle of gamestate, with 100 health
      */
     public Player() {
         super();
@@ -17,8 +17,12 @@ public class Player extends Being {
         this.health = 100;
     }
 
+    /*
+     * EFFECTS: player is initialized at the initial position of x and y and health. Used for testing purposes
+     */
     public Player(int initX, int initY) {
         super(initX, initY);
+        this.health = 100;
     }
 
     /*
@@ -71,9 +75,9 @@ public class Player extends Being {
     /*
      * MODIFIES: this
      * EFFECTS: decreases health of player by the damage input
-     *
      */
     public void decreaseHealth(int damage) {
+
         health -= damage;
     }
 

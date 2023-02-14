@@ -16,6 +16,7 @@ class SGameTest {
 
     @Test
     void testCheckGameOver() {
+        testGame.checkGameOver();
         assertTrue(testGame.isPlaying());
         testGame.getPlayer().health = 0;
         testGame.checkGameOver();
@@ -34,6 +35,9 @@ class SGameTest {
         assertEquals(20, testGame.getEnemies().get(1).getPosX());
         assertEquals(40, testGame.getEnemies().get(1).getPosY());
 
+    }
+
+    void testCheckBullets () {
     }
 
 

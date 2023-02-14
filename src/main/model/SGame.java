@@ -20,6 +20,9 @@ public class SGame {
 
     private Boolean playing; //represents if playing or not
 
+    /*
+    EFFECTS: instantiates a game, with no enemies and no bullets, with a new player in the middle
+     */
     public SGame() {
         this.enemies = new ArrayList<Enemy>();
         this.bullets = new ArrayList<Bullet>();

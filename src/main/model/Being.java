@@ -9,16 +9,23 @@ public abstract class Being {
 
     public static final int SPEED = 3;
 
+    //
+
     public Being() {
         this.direction = 1;
         this.verticalMovement = false;
     }
 
+    // overloading, another instantiation to specifify spawn location
     public Being(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
     }
 
+    /*
+    MODIFIES: this
+    EFFECTS: moves itself according to its direction and speed
+     */
     public void move() {
         if (verticalMovement) {
             posY = posY + direction * SPEED;
@@ -27,6 +34,9 @@ public abstract class Being {
         }
     }
 
+    /*
+    EFFECTS: checks it this has collided with another being
+     */
     public boolean collidedWith(Being e) {
         if (e.getPosX() == posX && e.getPosY() == posY) {
             return true;
