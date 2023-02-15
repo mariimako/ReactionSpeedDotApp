@@ -19,10 +19,11 @@ class BeingTest {
 
     @Test
     void collisionTest() {
-        //new being that is at a different player
-        Being difPosPlayer = new Player(testPlayer.getPosX()+100, testPlayer.getPosY()+500);
+        //new being that is at a different player, but same y pos. other cases are tested in subclasses
+        Being difPosPlayer = new Player(testPlayer.getPosX()+100, testPlayer.getPosY());
         assertFalse(testPlayer.collidedWith(difPosPlayer));
         Being samePosPlayer = new Player(); // same position as player, in middle of gamestate
         assertTrue(testPlayer.collidedWith(samePosPlayer));
+
     }
 }
