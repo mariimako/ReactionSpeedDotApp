@@ -27,18 +27,21 @@ class BulletTest {
     @Test
     void eliminateEnemyTest() {
         testGame.fireBullet();
+        testGame.fireBullet();
+        testGame.getEnemies().add(testEnemy);
         testGame.getEnemies().add(testEnemy);
         testGame.moveBullets();
         testGame.moveBullets();
         assertTrue(testGame.getBullets().get(0).collidedWith(testEnemy));
         testGame.checkBullets();
-        assertEquals(new ArrayList(), testGame.getBullets());
+        assertEquals(1, testGame.getBullets().size()); // should have one remaining bullet
+        assertEquals(testEnemy, testGame.getEnemies().get(0)); // should have one more enemy remaining
 
         Player boundaryPlayer = new Player(0, 0); //checking removal of boundary bullet
         Bullet boundaryBullet = new Bullet(boundaryPlayer);
         testGame.getBullets().add(boundaryBullet);
         testGame.checkBullets();
-        assertEquals(new ArrayList(), testGame.getBullets());
+        assertEquals(1, testGame.getBullets().size());
     }
 
     @Test
@@ -50,9 +53,9 @@ class BulletTest {
         assertFalse(testBullet.collidedWith(testEnemy));
         testBullet.move();
         assertTrue(testBullet.collidedWith(testEnemy));
-
     }
 
+    @Test
     void boundaryTest() {
         testPlayer.posX = testGame.WIDTH ; // put player on boundary
         testPlayer.posY = testGame.HEIGHT ;
@@ -60,12 +63,7 @@ class BulletTest {
         testGame.fireBullet(); // fire another bullet, should be on boundary
         assertEquals(testGame.WIDTH, testGame.getBullets().get(0).getPosX()); //check if at boundary
         assertEquals(testGame.HEIGHT, testGame.getBullets().get(0).getPosY());
-
         testGame.checkBullets(); // should delete only one bullet per tick
-
         assertEquals(1, testGame.getBullets().size()); //must be one bullet remaining
-
-
-
     }
 }

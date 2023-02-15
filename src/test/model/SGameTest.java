@@ -37,8 +37,5 @@ class SGameTest {
 
     }
 
-    void testCheckBullets () {
-    }
-
 
 }

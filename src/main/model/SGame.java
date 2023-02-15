@@ -51,13 +51,13 @@ public class SGame {
         for (Bullet b: bullets) {
             if (b.getPosX() <= 0 | b.getPosX() >= WIDTH | b.getPosY() >= HEIGHT | b.getPosY() <= 0) {
                 bullets.remove(b);
-                break;
+                break; // once boundary is removed, exit loop
             }
             for (Enemy e: enemies) {
                 if (b.collidedWith(e)) {
                     bullets.remove(b);
                     enemies.remove(e);
-                    break outer;
+                    break outer; //once collided enemy found, exit loop, as only one should be removed
                 }
             }
         }
