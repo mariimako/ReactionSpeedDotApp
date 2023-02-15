@@ -14,6 +14,7 @@ class BulletTest {
     private Enemy testEnemy;
     private Player testPlayer;
     private SGame testGame;
+    Player boundaryPlayer = new Player(0, 0); //checking removal of boundary bullet
 
     @BeforeEach
     void runBefore() {
@@ -26,18 +27,20 @@ class BulletTest {
 
     @Test
     void eliminateEnemyTest() {
-        testGame.fireBullet();
+        Player difPosPlayer = new Player( testGame.WIDTH/3,testGame.WIDTH/4 );
+        Bullet difBullet = new Bullet(difPosPlayer);
+        testGame.getBullets().add(difBullet); // add a bullet with different position
         testGame.fireBullet();
         testGame.getEnemies().add(testEnemy);
         testGame.getEnemies().add(testEnemy);
         testGame.moveBullets();
         testGame.moveBullets();
-        assertTrue(testGame.getBullets().get(0).collidedWith(testEnemy));
+        assertTrue(testGame.getBullets().get(1).collidedWith(testEnemy)); // one bullet added second should collide        assertTrue(testGame.getBullets().get(1).collidedWith(testEnemy)); // one bullet added second should collide
+        assertFalse(testGame.getBullets().get(0).collidedWith(testEnemy)); // difBullet should not have collided
         testGame.checkBullets();
-        assertEquals(1, testGame.getBullets().size()); // should have one remaining bullet
+        assertEquals(difBullet, testGame.getBullets().get(0)); // should have one remaining bullet
         assertEquals(testEnemy, testGame.getEnemies().get(0)); // should have one more enemy remaining
 
-        Player boundaryPlayer = new Player(0, 0); //checking removal of boundary bullet
         Bullet boundaryBullet = new Bullet(boundaryPlayer);
         testGame.getBullets().add(boundaryBullet);
         testGame.checkBullets();
