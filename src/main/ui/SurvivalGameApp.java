@@ -31,6 +31,7 @@ public class SurvivalGameApp {
     /*
     REQUIRES: user keyboard input to be either p, e, q, r.
     EFFECTS: handles user input for things to do like moving player down, firing bullet, and quiting the game
+    MODIFIES: this
      */
     private void menu() throws InterruptedException {
         System.out.println("Welcome to the game menu. Press the corresponding key to navigate.");
@@ -57,6 +58,7 @@ public class SurvivalGameApp {
     /*
     EFFECTS: spawns enemy at set location specified by user, outputs how many enemies
      there are and returns to menu for more input
+     MODIFIES: this
      */
     private void enemySpawn() throws InterruptedException {
         System.out.println("Enter x position to spawn enemy");
@@ -76,6 +78,7 @@ public class SurvivalGameApp {
     /*
     EFFECTS: fires a bullet in the gamestate by adding a bullet. Shows the postion and velocity, how many bullets
     were fired so far.
+    MODIFIES: this
      */
     private void handleBullet() throws InterruptedException {
         game.fireBullet(); // fire a new bullet in gamestate
@@ -106,6 +109,7 @@ public class SurvivalGameApp {
 
     /*
     EFFECTS: handles movement of player
+    MODIFIES: this
      */
     private void handlePlayer() throws InterruptedException {
         game.getPlayer().faceDown(); // face the player down
