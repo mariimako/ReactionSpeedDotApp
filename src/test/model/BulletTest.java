@@ -33,7 +33,7 @@ class BulletTest {
         testGame.fireBullet();
         testGame.getEnemies().add(testEnemy);
         testGame.getEnemies().add(testEnemy);
-        testGame.moveBullets();
+        testGame.moveBullets(); // move bullets in total 6 units, now should collide with testEnemy
         testGame.moveBullets();
         assertTrue(testGame.getBullets().get(1).collidedWith(testEnemy)); // one bullet added second should collide        assertTrue(testGame.getBullets().get(1).collidedWith(testEnemy)); // one bullet added second should collide
         assertFalse(testGame.getBullets().get(0).collidedWith(testEnemy)); // difBullet should not have collided
@@ -45,6 +45,24 @@ class BulletTest {
         testGame.getBullets().add(boundaryBullet);
         testGame.checkBullets();
         assertEquals(1, testGame.getBullets().size());
+    }
+
+    // check when no enemies are hit, bullets added should exist
+    @Test
+    void checkNoCollision() {
+        Player difPosPlayer = new Player( testGame.WIDTH/3,testGame.WIDTH/4 );
+        Bullet difBullet = new Bullet(difPosPlayer);
+        testGame.getBullets().add(difBullet); // add a bullet with different position
+        testGame.fireBullet();
+        Enemy enemyDifPos = new Enemy(testGame.WIDTH/5, testGame.WIDTH/9 );
+        testGame.getEnemies().add(enemyDifPos);
+        testGame.getEnemies().add(enemyDifPos);
+
+        testGame.checkBullets();
+
+        assertEquals(2, testGame.getEnemies().size()); // bullets should have no bullets removed
+        assertEquals(2, testGame.getBullets().size()); // bullets should have no bullets removed
+
     }
 
     @Test
