@@ -77,7 +77,6 @@ public class Player extends Being {
      * EFFECTS: decreases health of player by the damage input
      */
     public void decreaseHealth(int damage) {
-
         health -= damage;
     }
 
