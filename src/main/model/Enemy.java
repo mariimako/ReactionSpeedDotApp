@@ -1,6 +1,7 @@
 package model;
 
-// represents an enemy, spawned at locations. When this hits an player, player's health decreases
+// represents an enemy, spawned at locations. When this hits a player, player's health decreases
+// it can also be eliminated by bullets
 public class Enemy extends Being {
 
     /*

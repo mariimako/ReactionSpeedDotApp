@@ -8,7 +8,7 @@ public class Player extends Being {
     protected int health; // remaining health of player
 
     /*
-     * EFFECTS: player is initialized at the initial position in the middle of gamestate, with 100 health
+     * EFFECTS: player is initialized at the initial position in the middle of screen, with 100 health
      */
     public Player() {
         super();
@@ -18,7 +18,8 @@ public class Player extends Being {
     }
 
     /*
-     * EFFECTS: player is initialized at the initial position of x and y and health. Used for testing purposes
+     * EFFECTS: player is initialized at the initial position of x and y and health. Mainly Used for testing purposes
+     * does not require x and y to be within boundary, as it is updated
      */
     public Player(int initX, int initY) {
         super(initX, initY);
@@ -27,6 +28,7 @@ public class Player extends Being {
 
     /*
     EFFECTS: moves player, doesn't move if at boundary
+    MODIFIES: this
      */
     @Override
     public void move() {
@@ -72,6 +74,7 @@ public class Player extends Being {
         direction = -1;
     }
 
+    // not used for current user stories
     /*
      * MODIFIES: this
      * EFFECTS: decreases health of player by the damage input
@@ -81,19 +84,20 @@ public class Player extends Being {
     }
 
 
+    // not required for current user stories
     /* MODIFIES: this
-     * EFFECTS: stops player if at boundary
+     * EFFECTS: stops player if at boundary, for both top/bottom and right/left
      */
     public void handleBoundary() {
-        if (posX < 0) {
-            posX = 0;
-        } else if (posX >= SGame.WIDTH) {
-            posX = SGame.WIDTH;
+        if (posX < 0) { //at the left boundary
+            posX = 0; // don't move player anymore
+        } else if (posX >= SGame.WIDTH) { // at right boundary
+            posX = SGame.WIDTH; // don't move player anymore
         }
 
-        if (posY <= 0) {
+        if (posY <= 0) { // at bottom
             posY = 0;
-        } else if (posY > SGame.HEIGHT) {
+        } else if (posY > SGame.HEIGHT) { //at top
             posY = SGame.HEIGHT;
         }
     }

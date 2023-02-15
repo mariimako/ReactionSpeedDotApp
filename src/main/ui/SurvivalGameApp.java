@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 // a console based input ui, to navigate and perform actions related to the game
 public class SurvivalGameApp {
-    private final SGame game; // gamestate
+    private final SGame game; // gamestate, represents game with 0 enemies, 0 bullets, player
     private final Scanner scanner; //scanner for input
 
     /*
@@ -15,11 +15,11 @@ public class SurvivalGameApp {
     MODIFIES: this
      */
     public SurvivalGameApp() throws InterruptedException {
-        game = new SGame();
-        scanner = new Scanner(System.in);
+        game = new SGame(); // new gamestate, with a player instantiated in the center, 0 enemies and 0 bullets
+        scanner = new Scanner(System.in); // scanner for user input
         menu(); // open up game menu when instantiated
 
-        /* // THIS PART IS NOT USED YET
+        /* // THIS PART IS NOT USED YET, I kept it because I will use it in future phases
 
         game = new SGame();
         while (game.isPlaying()) {
@@ -29,12 +29,11 @@ public class SurvivalGameApp {
     }
 
     /*
-    REQUIRES: input to be either p, e, q, r.
+    REQUIRES: user keyboard input to be either p, e, q, r.
     EFFECTS: handles user input for things to do like moving player down, firing bullet, and quiting the game
      */
-
     private void menu() throws InterruptedException {
-        System.out.println("Welcome to the game menu. Press the corresponding key to naviagte.");
+        System.out.println("Welcome to the game menu. Press the corresponding key to navigate.");
         Thread.sleep(1500);
         System.out.println("The player is currently at " + game.getPlayer().getPosX()
                 + ", " + game.getPlayer().getPosY());
@@ -51,7 +50,7 @@ public class SurvivalGameApp {
             case 'f':
                 handleBullet();
             case 'q':
-                System.out.println("Goodbye");
+                System.out.println("Goodbye"); // if some other input not included, it will fire bullet
         }
     }
 
@@ -82,22 +81,22 @@ public class SurvivalGameApp {
         game.fireBullet(); // fire a new bullet in gamestate
         Bullet bullet = game.getBullets().get(game.getBullets().size() - 1); // represents the bullet that was fired
         System.out.println("You fired a bullet from the player!");
-        Thread.sleep(1500); // for readability, sleep
+        Thread.sleep(1500); // for readability, pause in between text
         System.out.print("It is at position " +  bullet.getPosX() + ", " + bullet.getPosY()
                 + " and it is travelling"); // outputs position of bullet that has been fired, which should be at player
 
-        if (bullet.getDirection() == -1) { // show which way the bullet is trvaelling,
+        if (bullet.getDirection() == -1) { // show which way the bullet is travelling,
 
             if (bullet.getVerticalMovement()) {
-                System.out.print(" downwards"); // at this moment only downwards and rightwards will output
+                System.out.print(" downwards"); // at this moment only downwards will output
             } else {
-                System.out.print(" leftwards");
+                System.out.print(" leftwards"); // other possibilities, not used in this phase
             }
         } else {
             if (bullet.getVerticalMovement()) {
                 System.out.print(" upwards");
             } else {
-                System.out.print(" rightwards");
+                System.out.print(" rightwards"); // this may output when fired bullet before moving down
             }
         }
         System.out.println(" with velocity " + bullet.SPEED);

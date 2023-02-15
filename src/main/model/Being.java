@@ -1,24 +1,32 @@
 package model;
 
-// represents parent type of Enemy, Player and Bullet. Implements similar methods like move, collision and gets
+// represents parent type of Enemy, Player and Bullet. Implements duplicate methods like move, collision and getters
+// does not currently have abstract methods, but plan to in the future, hence the class type
 public abstract class Being {
     protected int posX;  // x position of player
     protected int posY;  // y position of player
     protected boolean verticalMovement; // when true, Being is moving up or down
     protected int direction; // positive 1 represents right or up, negative 1 represents left or down
 
-    public static final int SPEED = 3;
+    public static final int SPEED = 3; // speed of all subtypes
 
-    //
 
+
+    /*
+    EFFECTS: instantiates a being in a game that is facing right
+     */
     public Being() {
         this.direction = 1;
         this.verticalMovement = false;
     }
 
-    // overloading, another instantiation to specifify spawn location
+    /*
+    MODIFIES: this
+    EFFECTS: instantiates a being in a game with specified position, does not require coordinates to be within game
+    as it will be updated
+     */
     public Being(int posX, int posY) {
-        this.posX = posX;
+        this.posX = posX;     // overloading, another instantiation to specify spawn location
         this.posY = posY;
     }
 

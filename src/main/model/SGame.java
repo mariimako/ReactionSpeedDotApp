@@ -33,7 +33,7 @@ public class SGame {
 
     /*
     MODIFIES: this
-    EFFECTS: spawns enemy in specified location
+    EFFECTS: spawns enemy in specified location, does not require x and y to be within game state as it would adjust
      */
     public void spawnEnemy(int x, int y) {
         enemies.add(new Enemy(x, y));
@@ -42,16 +42,16 @@ public class SGame {
 
     /*
     MODIFIES: this
-    EFFECTS: checks every bullet that exists and removes it if it has collided with
+    EFFECTS: checks every bullet that exists in gamestate and removes it if it has collided with
     an enemy or the walls. It should remove only one bullet as a bullet cannot delete
-    multiple enemies.
+    multiple enemies in one call.
      */
     protected void checkBullets() {
         outer:
         for (Bullet b: bullets) {
             if (b.getPosX() <= 0 | b.getPosX() >= WIDTH | b.getPosY() >= HEIGHT | b.getPosY() <= 0) {
-                bullets.remove(b);
-                break; // once boundary is removed, exit loop
+                bullets.remove(b); // remove if at boundary
+                break; // once boundary is removed, exit loop, only one bullet should be removed per call
             }
             for (Enemy e: enemies) {
                 if (b.collidedWith(e)) {
@@ -98,9 +98,8 @@ public class SGame {
 
 
 
-
-
-    // THE FOLLOWING METHODS ARE NOT USED, BUT WILL BE USED LATER IN THE PROJECT AS GRAPHICAL INTERFACE IS
+    // THE FOLLOWING METHODS ARE NOT USED TO SATIDY USER STORIES,
+    // BUT WILL BE USED LATER IN THE PROJECT AS GRAPHICAL INTERFACE IS
     // IMPLEMENTED
     // IGNORE ALL IMPLEMENTATIONS AS THEY DO NOT CONTRIBUTE TO CURRENT USER STORIES
 

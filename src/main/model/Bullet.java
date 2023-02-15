@@ -3,7 +3,6 @@ package model;
 // represents a bullet shot by players that eliminate enemies when it hits them
 public class Bullet extends Being {
 
-
     /*
     EFFECTS: instantiates bullet that is the same as the player for direction, position
      */

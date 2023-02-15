@@ -5,13 +5,13 @@
 
 This project is a **2D survival game**. The player will be controlling a single character to move around and dodge
 projectiles, eliminate enemies, gain and upgrade weapons and try to reach a high score. As the game progresses, enemies
-will increases and different enemies will appear.
+will increase and different enemies will appear.
 
 This project is interest to me because I personally loved games that are endless and require beating a high score. 
-I have programmed several games before, but I want to create one that is simple but fun and easy to play on desktop.
+I have programmed several games before, but I want to create one that is simple but fun and easy to play as a desktop 
+application.
 
 The following will be some characteristics of the game:
-
 - Player will have hitpoints that decrease to 0 when hit by projectiles or enemies, and it is game over when it is 0
 - Player's score increases as time progresses and enemies are eliminated
 - Players can pick up random weapons around the map
@@ -19,8 +19,8 @@ The following will be some characteristics of the game:
 - Enemies will vary, with different damage outputs, hitpoints and speed to reach player
 
 ## User Stories
-- As a user, I want to be able to move myself downwards in the game, and see my current position
+- As a user, I want to be able to move downwards in the game, and see my current position as a player
 - As a user, I want to add enemies to a list of enemies where I can see how many there are
-- As a user, I want to be able to fire bullets from my current position many times 
+- As a user, I want to be able to fire bullets from my current position (player position) many times 
 - As a user, I want to stop playing and exit
 
