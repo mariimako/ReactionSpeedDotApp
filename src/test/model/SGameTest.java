@@ -17,23 +17,23 @@ class SGameTest {
     @Test
     void testCheckGameOver() {
         testGame.checkGameOver();
-        assertTrue(testGame.isPlaying());
-        testGame.getPlayer().health = 0;
+        assertTrue(testGame.isPlaying()); // be playing
+        testGame.getPlayer().health = 0; // player health is 0, should be game over
         testGame.checkGameOver();
-        assertFalse(testGame.isPlaying());
+        assertFalse(testGame.isPlaying()); // not playing
         testGame.stopPlaying();
-        assertFalse(testGame.isPlaying());
+        assertFalse(testGame.isPlaying()); // still not playing
     }
 
     @Test
     void testSpawnEnemy () {
         testGame.spawnEnemy(10, 20);
-        assertEquals(10, testGame.getEnemies().get(0).getPosX());
+        assertEquals(10, testGame.getEnemies().get(0).getPosX()); // should be spawned at location
         assertEquals(20, testGame.getEnemies().get(0).getPosY());
 
         testGame.spawnEnemy(20, 40);
-        assertEquals(20, testGame.getEnemies().get(1).getPosX());
-        assertEquals(40, testGame.getEnemies().get(1).getPosY());
+        assertEquals(20, testGame.getEnemies().get(1).getPosX()); // multiple should be able to be added
+        assertEquals(40, testGame.getEnemies().get(1).getPosY()); // this enemy should be at index (1)
 
     }
 

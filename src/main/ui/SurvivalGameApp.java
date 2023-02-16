@@ -40,18 +40,17 @@ public class SurvivalGameApp {
                 + ", " + game.getPlayer().getPosY());
         Thread.sleep(1500);
         System.out.println("Menu:");
-        System.out.println("Add New Enemy (p)          Move Player (e)");
-        System.out.println("Quit  (q)                  Fire Bullet (f)");
+        System.out.println("Add New Enemy (p)          Move Player Down (e)");
+        System.out.println("Quit  (any other key)          Fire Bullet (f)");
         char input = scanner.next().charAt(0);
-        switch (input) {
-            case 'p':
-                enemySpawn();
-            case 'e':
-                handlePlayer();
-            case 'f':
-                handleBullet();
-            case 'q':
-                System.out.println("Goodbye"); // if some other input not included, it will fire bullet
+        if (input == 'p') {
+            enemySpawn();
+        } else if (input == 'e') {
+            handlePlayer();
+        } else if (input == 'f') {
+            handleBullet();
+        } else {
+            System.out.println("Goodbye"); // if some other input, quit game
         }
     }
 
