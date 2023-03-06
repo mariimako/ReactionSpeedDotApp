@@ -14,6 +14,8 @@ import org.json.*;
 public class JsonReader {
     private String source;
 
+    private JSONObject jsonObject;
+
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
         this.source = source;
@@ -23,7 +25,7 @@ public class JsonReader {
     // throws IOException if an error occurs reading data from file
     public SGame read() throws IOException {
         String jsonData = readFile(source);
-        JSONObject jsonObject = new JSONObject(jsonData);
+        jsonObject = new JSONObject(jsonData);
         return parseGameState(jsonObject);
     }
 
@@ -49,7 +51,7 @@ public class JsonReader {
 
     // MODIFIES: gs
     // EFFECTS: parses beings from JSON object and adds them to gamestate
-    private void getObjects(SGame gs, JSONObject jsonObject, String beingType) {
+    public void getObjects(SGame gs, JSONObject jsonObject, String beingType) {
         JSONArray jsonArray = jsonObject.getJSONArray(beingType);
         for (Object json : jsonArray) {
             JSONObject nextBeing = (JSONObject) json;
@@ -72,6 +74,12 @@ public class JsonReader {
         } else if (beingType == "player") {
             Player p = new Player(posX, posY);
             gs.setPlayer(p);
+        } else {
+            throw new JSONException("Could not find json object");
         }
+    }
+
+    public JSONObject getJsonObject() {
+        return jsonObject;
     }
 }

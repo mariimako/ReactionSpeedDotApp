@@ -94,4 +94,5 @@ class JsonWriterTest {
         assertEquals(testEnemies.get(1).getPosX(), gs.getEnemies().get(1).getPosX());
         assertEquals(testEnemies.get(1).getPosY(), gs.getEnemies().get(1).getPosY());
     }
+
 }

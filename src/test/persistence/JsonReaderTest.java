@@ -4,6 +4,9 @@ import model.Being;
 import model.Bullet;
 import model.Enemy;
 import model.SGame;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,6 +56,23 @@ public class JsonReaderTest {
         assertEquals(20, testEnemies.get(0).getPosY());
         assertEquals(30, testEnemies.get(1).getPosX());
         assertEquals(50, testEnemies.get(1).getPosY());
+    }
+
+    @Test
+    void addBeing() {
+        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+
+        try{
+            SGame gs = reader.read();
+            JSONObject jsonObject = reader.getJsonObject();
+            reader.getObjects(gs, jsonObject, "nothing");
+            fail("Should not find this object");
+        } catch (JSONException e){
+            // pass
+        } catch (IOException e) {
+            fail("Couldn't read from file");
+        }
+
     }
 
 }
