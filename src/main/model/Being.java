@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 // represents parent type of Enemy, Player and Bullet. Implements duplicate methods like move, collision and getters
 // does not currently have abstract methods, but plan to in the future, hence the class type
 public abstract class Being {
@@ -51,6 +54,13 @@ public abstract class Being {
         } else {
             return false;
         }
+    }
+
+    public JSONObject toJson() {
+        JSONObject obj = new JSONObject();
+        obj.put("positionX", this.posX);
+        obj.put("positionY", this.posY);
+        return obj;
     }
 
     public int getPosX() {

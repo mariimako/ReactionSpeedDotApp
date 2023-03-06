@@ -1,14 +1,25 @@
 package ui;
 
+import model.Being;
+import model.Enemy;
 import model.SGame;
 import model.Bullet;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // a console based input ui, to navigate and perform actions related to the game
 public class SurvivalGameApp {
-    private final SGame game; // gamestate, represents game with 0 enemies, 0 bullets, player
+    private SGame game; // gamestate, represents game with 0 enemies, 0 bullets, player
     private final Scanner scanner; //scanner for input
+
+    private static final String JSON_STORE = "./data/gamestate.json";
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
+
 
     /*
     EFFECTS: constructs game, opens menu
@@ -17,15 +28,12 @@ public class SurvivalGameApp {
     public SurvivalGameApp() throws InterruptedException {
         game = new SGame(); // new gamestate, with a player instantiated in the center, 0 enemies and 0 bullets
         scanner = new Scanner(System.in); // scanner for user input
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         menu(); // open up game menu when instantiated
 
-        /* // THIS PART IS NOT USED YET, I kept it because I will use it in future phases
-
-        game = new SGame();
-        while (game.isPlaying()) {
-            game.update();
-        }
-         */
     }
 
     /*
@@ -34,6 +42,29 @@ public class SurvivalGameApp {
     MODIFIES: this
      */
     private void menu() throws InterruptedException {
+        displayMenu();
+        char input = scanner.next().charAt(0);
+        if (input == 'p') {
+            enemySpawn();
+        } else if (input == 'e') {
+            handlePlayer();
+        } else if (input == 'f') {
+            handleBullet();
+        } else if (input == 's') {
+            saveGameState();
+        } else if (input == 'l') {
+            loadGameState();
+        } else if (input == 'g') {
+            showState();
+        } else {
+            System.out.println("Goodbye"); // if some other input, quit game
+        }
+    }
+
+    /*
+    EFFECTS: shows menu for possible user actions
+     */
+    private void displayMenu() throws InterruptedException {
         System.out.println("Welcome to the game menu. Press the corresponding key to navigate.");
         Thread.sleep(1500);
         System.out.println("The player is currently at " + game.getPlayer().getPosX()
@@ -42,20 +73,59 @@ public class SurvivalGameApp {
         System.out.println("Menu:");
         System.out.println("Add New Enemy (p)          Move Player Down (e)");
         System.out.println("Quit  (any other key)          Fire Bullet (f)");
-        char input = scanner.next().charAt(0);
-        if (input == 'p') {
-            enemySpawn();
-        } else if (input == 'e') {
-            handlePlayer();
-        } else if (input == 'f') {
-            handleBullet();
-        } else {
-            System.out.println("Goodbye"); // if some other input, quit game
+        System.out.println("Save Game       (s)              Load Game (l) ");
+        System.out.println("Show Game State (g)");
+
+    }
+
+    /*
+    EFFECTS: saves gamestate into JSON
+     */
+
+    private void saveGameState() throws InterruptedException {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(game);
+            jsonWriter.close();
+            System.out.println("Saved game to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+
+        menu();
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads gamestate from file
+    private void loadGameState() throws InterruptedException {
+        try {
+            game = jsonReader.read();
+            System.out.println("Loaded game from " + JSON_STORE);
+            showState();
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+
+        menu();
+    }
+
+
+    private void showState() throws InterruptedException {
+        System.out.println("Here is your gamestate:");
+        System.out.println("Player position: " + game.getPlayer().getPosX() + "," + game.getPlayer().getPosY());
+
+        System.out.println("Enemies positions:");
+        for (Being e : game.getEnemies()) {
+            System.out.print(e.getPosX() + "," + e.getPosY());
+        }
+        System.out.println("Bullet positions:");
+        for (Being b : game.getBullets()) {
+            System.out.print(b.getPosX() + "," + b.getPosY());
         }
     }
 
     /*
-    EFFECTS: spawns enemy at set location specified by user, outputs how many enemies
+     EFFECTS: spawns enemy at set location specified by user, outputs how many enemies
      there are and returns to menu for more input
      MODIFIES: this
      */

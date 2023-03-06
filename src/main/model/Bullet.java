@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // represents a bullet shot by players that eliminate enemies when it hits them
 public class Bullet extends Being {
 
@@ -11,5 +13,12 @@ public class Bullet extends Being {
         this.verticalMovement = player.getVerticalMovement();
         this.posX = player.getPosX();
         this.posY = player.getPosY();
+    }
+
+    /*
+    EFFECTS: instantiates bullet at specified position, used for loading game
+     */
+    public Bullet(int posX, int posY) {
+        super(posX, posY);
     }
 }

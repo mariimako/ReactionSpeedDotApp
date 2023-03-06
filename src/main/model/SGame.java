@@ -1,11 +1,21 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 // represents game state. updates game to change player, bullet position and spawns enemies sometimes
-public class SGame {
+public class SGame implements Writable {
+
+    private ArrayList<Enemy> enemies; // a list of enemies present in the gamestate that has spawned
+    private ArrayList<Bullet> bullets; // a list of bullets that exists in the gamestate
+    private Player player; // represents the player
+
     public static final int HEIGHT = 500; // height of gamestate
     public static final int WIDTH = 500; // width of gamestate
 
@@ -13,10 +23,6 @@ public class SGame {
     private static final int APPEARANCE_RATE = 150; // appearance rate of enemies
 
     private int counter; //NOT USED YET a counter to keep track when to spawn enemies
-
-    private ArrayList<Enemy> enemies; // a list of enemies present in the gamestate that has spawned
-    private ArrayList<Bullet> bullets; // a list of bullets that has been exists in the gamestate
-    private Player player; // represents the player
 
     private Boolean playing; //represents if playing or not
 
@@ -74,8 +80,43 @@ public class SGame {
     }
 
 
+    // EFFECTS: convert whole gamestate object to json object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        JSONArray enemyArray = new JSONArray();
+        JSONArray bulletArray = new JSONArray();
+        JSONArray beingArray = new JSONArray();
+
+        beingArray.put(player.toJson());
+
+        // Add each enemy to the JSON array
+        for (Enemy enemy : enemies) {
+            JSONObject enemyJson = enemy.toJson();
+            enemyArray.put(enemyJson);
+        }
+
+        // Add each bullet to the JSON array
+        for (Bullet bullet : bullets) {
+            JSONObject bulletJson = bullet.toJson();
+            bulletArray.put(bulletJson);
+        }
+
+        // Add player, enemies, and bullets to the main JSON object
+        json.put("player", beingArray);
+        json.put("enemies", enemyArray);
+        json.put("bullets", bulletArray);
+
+        return json;
+    }
+
+
     public Player getPlayer() {
-        return player;
+        return this.player;
+    }
+
+    public void setPlayer(Player p) {
+        this.player = p;
     }
 
     public Boolean isPlaying() {

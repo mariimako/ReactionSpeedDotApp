@@ -1,0 +1,17 @@
+{
+    "enemies": [],
+    "player": [{
+        "positionY": 250,
+        "positionX": 250
+    }],
+    "bullets": [
+        {
+            "positionY": 20,
+            "positionX": 10
+        },
+        {
+            "positionY": 40,
+            "positionX": 30
+        }
+    ]
+}
