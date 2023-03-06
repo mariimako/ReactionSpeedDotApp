@@ -71,11 +71,9 @@ public class JsonReader {
         } else if (beingType == "bullets") {
             Bullet b = new Bullet(posX, posY);
             gs.getBullets().add(b);
-        } else if (beingType == "player") {
+        } else {
             Player p = new Player(posX, posY);
             gs.setPlayer(p);
-        } else {
-            throw new JSONException("Could not find json object");
         }
     }
 

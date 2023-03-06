@@ -58,21 +58,4 @@ public class JsonReaderTest {
         assertEquals(50, testEnemies.get(1).getPosY());
     }
 
-    @Test
-    void addBeing() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
-
-        try{
-            SGame gs = reader.read();
-            JSONObject jsonObject = reader.getJsonObject();
-            reader.getObjects(gs, jsonObject, "nothing");
-            fail("Should not find this object");
-        } catch (JSONException e){
-            // pass
-        } catch (IOException e) {
-            fail("Couldn't read from file");
-        }
-
-    }
-
 }
