@@ -1,4 +1,10 @@
 {
-    "thingies": [],
-    "name": "My work room"
+    "enemies": [],
+    "bullets": [],
+    "player": [{
+      }
+    ],
+    "somethingElse": [{
+    }
+    ]
 }

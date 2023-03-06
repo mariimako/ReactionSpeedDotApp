@@ -40,14 +40,14 @@ public class JsonReaderTest {
 
 
     void checkLists(SGame gs) {
-        List<Bullet> testBullets= gs.getBullets();
+        List<Bullet> testBullets = gs.getBullets();
         assertEquals(2, testBullets.size());
         assertEquals(400, testBullets.get(0).getPosX());
         assertEquals(20, testBullets.get(0).getPosY());
         assertEquals(50, testBullets.get(1).getPosX());
         assertEquals(50, testBullets.get(1).getPosY());
 
-        List<Enemy> testEnemies= gs.getEnemies();
+        List<Enemy> testEnemies = gs.getEnemies();
         assertEquals(2, testEnemies.size());
         assertEquals(10, testEnemies.get(0).getPosX());
         assertEquals(20, testEnemies.get(0).getPosY());
