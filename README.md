@@ -19,8 +19,10 @@ The following will be some characteristics of the game:
 - Enemies will vary, with different damage outputs, hitpoints and speed to reach player
 
 ## User Stories
-- As a user, I want to be able to move downwards in the game, and see my current position as a player
+- As a user, I want to be able to move in four directions in the game, and see my current position as a player
 - As a user, I want to add enemies to a list of enemies where I can see how many there are
 - As a user, I want to be able to fire bullets from my current position (player position) many times 
 - As a user, I want to stop playing and exit
+- As a user, I want to choose to save my game state of the most recent state. This will save the player's position, enemies and bullets
+- As a user, I want to load my most recent saved gamestate to get the saved position of player, enemy and bullets
 
