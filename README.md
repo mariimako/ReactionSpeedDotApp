@@ -21,11 +21,12 @@ The following will be some characteristics of the game:
 Sources:
 JsonSerializationDemo, taken from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 Inspiration for saving and loading using Json
+
 ## User Stories
 - As a user, I want to be able to move in four directions in the game, and see my current position as a player
 - As a user, I want to add enemies to a list of enemies where I can see how many there are
 - As a user, I want to be able to fire bullets from my current position (player position) many times,
 - As a user, I want to be able to move bullets in their respective directions
-- As a user, I want to choose to save my game state of the most recent state.This saves all information of the game
-- As a user, I want to choose load my most recent saved gamestate to get the saved information of the game
+- As a user, I want to choose to save my game state of the most recent state.This saves all information of the game 
+- As a user, I want to choose to load my most recent saved gamestate to get the saved information of the game
 
