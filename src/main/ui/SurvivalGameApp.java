@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 // a console based input ui, to navigate and perform actions related to the game
 public class SurvivalGameApp {
     private SGame game; // gamestate, represents game with 0 enemies, 0 bullets, player
@@ -57,7 +59,7 @@ public class SurvivalGameApp {
         } else if (input == 'g') {
             showState();
         } else {
-            System.out.println("Goodbye"); // if some other input, quit game
+            System.exit(0); // if some other input, quit game
         }
     }
 
@@ -67,15 +69,10 @@ public class SurvivalGameApp {
     private void displayMenu() throws InterruptedException {
         System.out.println("Welcome to the game menu. Press the corresponding key to navigate.");
         Thread.sleep(1500);
-        System.out.println("The player is currently at " + game.getPlayer().getPosX()
-                + ", " + game.getPlayer().getPosY());
-        Thread.sleep(1500);
         System.out.println("Menu:");
-        System.out.println("Add New Enemy (p)          Move Player Down (e)");
-        System.out.println("Quit  (any other key)          Fire Bullet (f)");
-        System.out.println("Save Game       (s)              Load Game (l) ");
-        System.out.println("Show Game State (g)");
-
+        System.out.println("Show Game State (g)         Add New Enemy (p)          Move Player (e)");
+        System.out.println("                            Fire Bullet (f)                                ");
+        System.out.println("Save Game       (s)         Load Game (l)              Quit Game (any other key)");
     }
 
     /*
@@ -91,7 +88,6 @@ public class SurvivalGameApp {
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
-
         menu();
     }
 
@@ -114,14 +110,16 @@ public class SurvivalGameApp {
         System.out.println("Here is your gamestate:");
         System.out.println("Player position: " + game.getPlayer().getPosX() + "," + game.getPlayer().getPosY());
 
-        System.out.println("Enemies positions:");
+        System.out.print("Enemies positions: ");
         for (Being e : game.getEnemies()) {
-            System.out.print(e.getPosX() + "," + e.getPosY());
+            System.out.print(e.getPosX() + "," + e.getPosY() + " ");
         }
-        System.out.println("Bullet positions:");
+        System.out.print("\nBullet positions: ");
         for (Being b : game.getBullets()) {
-            System.out.print(b.getPosX() + "," + b.getPosY());
+            System.out.print(b.getPosX() + "," + b.getPosY() + " ");
         }
+        System.out.println("\n");
+        menu();
     }
 
     /*
@@ -181,10 +179,26 @@ public class SurvivalGameApp {
     MODIFIES: this
      */
     private void handlePlayer() throws InterruptedException {
-        game.getPlayer().faceDown(); // face the player down
-        game.getPlayer().move(); // move the player down
-        Thread.sleep(2000);
-        System.out.println("You have moved player " + game.getPlayer().SPEED + " units downwards!");
+        System.out.println("Use WASD to move player");
+        char input = scanner.next().charAt(0);
+        if (input == 'w') {
+            game.getPlayer().faceUp(); // face the player down
+            game.getPlayer().move(); // move the player down
+        } else if (input == 'a') {
+            game.getPlayer().faceLeft(); // face the player down
+            game.getPlayer().move(); // move the player down
+        } else if (input == 's') {
+            game.getPlayer().faceDown(); // face the player down
+            game.getPlayer().move(); // move the player down
+        } else if (input == 'd') {
+            game.getPlayer().faceRight(); // face the player down
+            game.getPlayer().move(); // move the player down
+        } else {
+            System.out.println("Invalid. Try again");
+            handlePlayer();
+        }
+        System.out.println("You have moved player to " + game.getPlayer().getPosX()
+                + ", " + game.getPlayer().getPosY());
         Thread.sleep(2000);
         menu(); // return back to menu
     }

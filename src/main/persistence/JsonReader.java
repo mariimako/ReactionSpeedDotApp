@@ -14,8 +14,6 @@ import org.json.*;
 public class JsonReader {
     private String source;
 
-    private JSONObject jsonObject;
-
     // EFFECTS: constructs reader to read from source file
     public JsonReader(String source) {
         this.source = source;
@@ -25,7 +23,7 @@ public class JsonReader {
     // throws IOException if an error occurs reading data from file
     public SGame read() throws IOException {
         String jsonData = readFile(source);
-        jsonObject = new JSONObject(jsonData);
+        JSONObject jsonObject = new JSONObject(jsonData);
         return parseGameState(jsonObject);
     }
 
@@ -75,9 +73,5 @@ public class JsonReader {
             Player p = new Player(posX, posY);
             gs.setPlayer(p);
         }
-    }
-
-    public JSONObject getJsonObject() {
-        return jsonObject;
     }
 }
