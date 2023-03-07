@@ -160,7 +160,7 @@ public class SGame implements Writable {
     MODIFIES: this
     EFFECTS: moves all bullets in their predetermined ways
     */
-    protected void moveBullets() {
+    public void moveBullets() {
         for (Bullet b : bullets) {
             b.move();
         }

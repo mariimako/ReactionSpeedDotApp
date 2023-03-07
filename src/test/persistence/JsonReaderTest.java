@@ -33,8 +33,11 @@ public class JsonReaderTest {
         JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
         try {
             SGame gs = reader.read();
-            assertEquals(400, gs.getPlayer().getPosX());
-            assertEquals(20, gs.getPlayer().getPosY());
+            assertEquals(250, gs.getPlayer().getPosX());
+            assertEquals(250, gs.getPlayer().getPosY());
+            assertEquals(1, gs.getPlayer().getDirection());
+            assertTrue(gs.getPlayer().getVerticalMovement());
+
             checkLists(gs);
         } catch (IOException e) {
             fail("Couldn't read from file");
@@ -45,17 +48,28 @@ public class JsonReaderTest {
     void checkLists(SGame gs) {
         List<Bullet> testBullets = gs.getBullets();
         assertEquals(2, testBullets.size());
-        assertEquals(400, testBullets.get(0).getPosX());
+        assertEquals(10, testBullets.get(0).getPosX());
         assertEquals(20, testBullets.get(0).getPosY());
-        assertEquals(50, testBullets.get(1).getPosX());
-        assertEquals(50, testBullets.get(1).getPosY());
+        assertFalse(testBullets.get(0).getVerticalMovement());
+        assertEquals(-1, testBullets.get(0).getDirection());
+
+        assertEquals(30, testBullets.get(1).getPosX());
+        assertEquals(40, testBullets.get(1).getPosY());
+        assertTrue(testBullets.get(1).getVerticalMovement());
+        assertEquals(1, testBullets.get(1).getDirection());
+
 
         List<Enemy> testEnemies = gs.getEnemies();
         assertEquals(2, testEnemies.size());
-        assertEquals(10, testEnemies.get(0).getPosX());
-        assertEquals(20, testEnemies.get(0).getPosY());
-        assertEquals(30, testEnemies.get(1).getPosX());
-        assertEquals(50, testEnemies.get(1).getPosY());
+        assertEquals(1, testEnemies.get(0).getPosX());
+        assertEquals(1, testEnemies.get(0).getPosY());
+        assertFalse(testBullets.get(0).getVerticalMovement());
+        assertEquals(-1, testBullets.get(0).getDirection());
+
+        assertEquals(100, testEnemies.get(1).getPosX());
+        assertEquals(100, testEnemies.get(1).getPosY());
+        assertTrue(testBullets.get(1).getVerticalMovement());
+        assertEquals(1, testBullets.get(1).getDirection());
     }
 
 }

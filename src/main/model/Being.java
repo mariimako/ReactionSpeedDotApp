@@ -9,7 +9,7 @@ public abstract class Being {
     protected int posX;  // x position of player
     protected int posY;  // y position of player
     protected boolean verticalMovement; // when true, Being is moving up or down
-    protected int direction; // positive 1 represents right or up, negative 1 represents left or down
+    protected int direction = 1; // positive 1 represents right or up, negative 1 represents left or down
 
     public static final int SPEED = 3; // speed of all subtypes
 
@@ -19,7 +19,6 @@ public abstract class Being {
     EFFECTS: instantiates a being in a game that is facing right
      */
     public Being() {
-        this.direction = 1;
         this.verticalMovement = false;
     }
 
@@ -60,6 +59,8 @@ public abstract class Being {
         JSONObject obj = new JSONObject();
         obj.put("positionX", this.posX);
         obj.put("positionY", this.posY);
+        obj.put("direction", this.direction);
+        obj.put("verticalMovement", this.verticalMovement);
         return obj;
     }
 
@@ -79,5 +80,11 @@ public abstract class Being {
         return direction;
     }
 
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 
+    public void setVerticalMovement(boolean verticalMovement) {
+        this.verticalMovement = verticalMovement;
+    }
 }

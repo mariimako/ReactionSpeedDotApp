@@ -62,15 +62,23 @@ public class JsonReader {
     private void addBeing(SGame gs, JSONObject jsonObject, String beingType) {
         int posX = jsonObject.getInt("positionX");
         int posY = jsonObject.getInt("positionY");
+        Boolean verticalMovement = jsonObject.getBoolean("verticalMovement");
+        int direction = jsonObject.getInt("direction");
 
         if (beingType == "enemies") {
             Enemy e = new Enemy(posX, posY);
+            e.setVerticalMovement(verticalMovement);
+            e.setDirection(direction);
             gs.getEnemies().add(e);
         } else if (beingType == "bullets") {
             Bullet b = new Bullet(posX, posY);
+            b.setVerticalMovement(verticalMovement);
+            b.setDirection(direction);
             gs.getBullets().add(b);
         } else {
             Player p = new Player(posX, posY);
+            p.setVerticalMovement(verticalMovement);
+            p.setDirection(direction);
             gs.setPlayer(p);
         }
     }

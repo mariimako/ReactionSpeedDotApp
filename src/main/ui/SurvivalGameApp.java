@@ -25,7 +25,6 @@ public class SurvivalGameApp {
 
     /*
     EFFECTS: constructs game, opens menu
-    MODIFIES: this
      */
     public SurvivalGameApp() throws InterruptedException {
         game = new SGame(); // new gamestate, with a player instantiated in the center, 0 enemies and 0 bullets
@@ -39,7 +38,7 @@ public class SurvivalGameApp {
     }
 
     /*
-    REQUIRES: user keyboard input to be either p, e, q, r.
+    REQUIRES: user keyboard input to be characters that are valid by the scanner class
     EFFECTS: handles user input for things to do like moving player down, firing bullet, and quiting the game
     MODIFIES: this
      */
@@ -58,6 +57,8 @@ public class SurvivalGameApp {
             loadGameState();
         } else if (input == 'g') {
             showState();
+        } else if (input == 'o') {
+            handleMoveBullets();
         } else {
             System.exit(0); // if some other input, quit game
         }
@@ -67,12 +68,27 @@ public class SurvivalGameApp {
     EFFECTS: shows menu for possible user actions
      */
     private void displayMenu() throws InterruptedException {
-        System.out.println("Welcome to the game menu. Press the corresponding key to navigate.");
+        System.out.println("\n Welcome to the game menu. Press the corresponding key to navigate.");
         Thread.sleep(1500);
         System.out.println("Menu:");
         System.out.println("Show Game State (g)         Add New Enemy (p)          Move Player (e)");
-        System.out.println("                            Fire Bullet (f)                                ");
+        System.out.println("                            Fire Bullet (f)            Move Bullets (o)");
         System.out.println("Save Game       (s)         Load Game (l)              Quit Game (any other key)");
+    }
+
+    /*
+    MODIFIES: game
+    EFFECTS: moves all bullets in specified directions
+     */
+    private void handleMoveBullets() throws InterruptedException {
+        game.moveBullets();
+        System.out.println("Moved the bullets!");
+        System.out.print("\n Your bullets are now in: ");
+        for (Being b : game.getBullets()) {
+            System.out.print(b.getPosX() + "," + b.getPosY() + " ");
+        }
+
+        menu();
     }
 
     /*
@@ -91,8 +107,11 @@ public class SurvivalGameApp {
         menu();
     }
 
-    // MODIFIES: this
-    // EFFECTS: loads gamestate from file
+    /*
+    MODIFIES: this
+    EFFECTS: loads gamestate from file
+     */
+
     private void loadGameState() throws InterruptedException {
         try {
             game = jsonReader.read();
@@ -106,17 +125,24 @@ public class SurvivalGameApp {
     }
 
 
+    /*
+    EFFECTS: show enemy, bullets and player position, which represents the whole gamestate
+     */
     private void showState() throws InterruptedException {
         System.out.println("Here is your gamestate:");
-        System.out.println("Player position: " + game.getPlayer().getPosX() + "," + game.getPlayer().getPosY());
+        System.out.print("Player position: " + game.getPlayer().getPosX() + "," + game.getPlayer().getPosY() + ": ");
+        showDirection(game.getPlayer());
 
-        System.out.print("Enemies positions: ");
-        for (Being e : game.getEnemies()) {
-            System.out.print(e.getPosX() + "," + e.getPosY() + " ");
+        System.out.print("\nEnemies positions: ");
+        for (Being e : game.getEnemies()) { // loop through and output enemies
+            System.out.print(e.getPosX() + "," + e.getPosY() + ": ");
+            showDirection(e);
         }
+
         System.out.print("\nBullet positions: ");
         for (Being b : game.getBullets()) {
-            System.out.print(b.getPosX() + "," + b.getPosY() + " ");
+            System.out.print(b.getPosX() + "," + b.getPosY() + ": ");
+            showDirection(b);
         }
         System.out.println("\n");
         menu();
@@ -155,20 +181,8 @@ public class SurvivalGameApp {
         System.out.print("It is at position " +  bullet.getPosX() + ", " + bullet.getPosY()
                 + " and it is travelling"); // outputs position of bullet that has been fired, which should be at player
 
-        if (bullet.getDirection() == -1) { // show which way the bullet is travelling,
+        showDirection(bullet);
 
-            if (bullet.getVerticalMovement()) {
-                System.out.print(" downwards"); // at this moment only downwards will output
-            } else {
-                System.out.print(" leftwards"); // other possibilities, not used in this phase
-            }
-        } else {
-            if (bullet.getVerticalMovement()) {
-                System.out.print(" upwards");
-            } else {
-                System.out.print(" rightwards"); // this may output when fired bullet before moving down
-            }
-        }
         System.out.println(" with velocity " + bullet.SPEED);
         System.out.println("You have now fired " + game.getBullets().size() + " bullet(s)!"); //gamestate stores bullets
         menu(); // go back to menu for more things to do
@@ -203,6 +217,26 @@ public class SurvivalGameApp {
         menu(); // return back to menu
     }
 
+
+    /*
+    EFFECTS: shows the direction of anything in the gamestate
+     */
+    public void showDirection(Being b) {
+
+        if (b.getDirection() == -1) { // show which way the bullet is travelling,
+            if (b.getVerticalMovement()) {
+                System.out.print(" downward "); // at this moment only downwards will output
+            } else {
+                System.out.print(" leftwards "); // other possibilities, not used in this phase
+            }
+        } else {
+            if (b.getVerticalMovement()) {
+                System.out.print(" upwards ");
+            } else {
+                System.out.print(" rightwards "); // this may output when fired bullet before moving down
+            }
+        }
+    }
 
     /* FUTURE IMPLEMENTATIONS (ignore)
     public void move(KeyEvent e) {

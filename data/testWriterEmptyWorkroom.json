@@ -2,7 +2,9 @@
     "enemies": [],
     "player": [{
         "positionY": 250,
-        "positionX": 250
+        "verticalMovement": false,
+        "positionX": 250,
+        "direction": 1
     }],
     "bullets": []
 }
