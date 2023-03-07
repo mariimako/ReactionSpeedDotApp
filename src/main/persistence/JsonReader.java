@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
-// Represents a reader that reads workroom from JSON data stored in file
+// Represents a reader that reads gamestate from JSON data stored in file taken from JsonSerializationDemo
 public class JsonReader {
     private String source;
 
@@ -58,7 +58,7 @@ public class JsonReader {
     }
 
     // MODIFIES: gs
-    // EFFECTS: parses being from JSON object and adds it to gamestate
+    // EFFECTS: parses being from JSON object and adds it to gamestate, adds to appropiate objects depedning on type
     private void addBeing(SGame gs, JSONObject jsonObject, String beingType) {
         int posX = jsonObject.getInt("positionX");
         int posY = jsonObject.getInt("positionY");

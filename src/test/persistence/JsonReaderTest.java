@@ -1,13 +1,9 @@
 package persistence;
 
-import model.Being;
+
 import model.Bullet;
 import model.Enemy;
 import model.SGame;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -16,6 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
+// test class for json reader. Credit to JsonSerializationDemo for inspiration
 public class JsonReaderTest {
     @Test
     void testReaderNonExistentFile() {

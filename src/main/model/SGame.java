@@ -5,9 +5,8 @@ import org.json.JSONObject;
 
 import persistence.Writable;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.List;
+
 
 // represents game state. updates game to change player, bullet position and spawns enemies sometimes
 public class SGame implements Writable {
@@ -80,7 +79,7 @@ public class SGame implements Writable {
     }
 
 
-    // EFFECTS: convert whole gamestate object to json object
+    // EFFECTS: convert whole gamestate object to json object, taken influence from JsonSerializationDemo
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
