@@ -6,10 +6,10 @@
         "direction": 1
     }],
     "player": [{
-        "positionY": 253,
-        "verticalMovement": true,
+        "positionY": 250,
+        "verticalMovement": false,
         "positionX": 247,
-        "direction": 1
+        "direction": -1
     }],
     "bullets": [{
         "positionY": 250,

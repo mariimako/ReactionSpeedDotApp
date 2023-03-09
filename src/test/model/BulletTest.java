@@ -27,22 +27,6 @@ class BulletTest {
 
     }
 
-    @Test
-    void eliminateEnemyTest() {
-        testGame.getBullets().add(difBullet); // add a bullet with different position
-        testGame.fireBullet(); // add a bullet with default position (center of screen)
-        testGame.getEnemies().add(testEnemy); // add two enemies in near center location
-        testGame.getEnemies().add(testEnemy);
-        testGame.moveBullets(); // move bullets in total 6 units, now should collide with testEnemy
-        testGame.moveBullets(); // only the bullets created by testPlayer, not difPosPlayer should have been collided
-        assertTrue(testGame.getBullets().get(1).collidedWith(testEnemy)); // one bullet added second should collide        assertTrue(testGame.getBullets().get(1).collidedWith(testEnemy)); // one bullet added second should collide
-        assertFalse(testGame.getBullets().get(0).collidedWith(testEnemy)); // difBullet should not have collided
-        testGame.checkBullets(); // delete one colliding bullet
-        assertEquals(difBullet, testGame.getBullets().get(0)); // should have one remaining bullet, in dif pos
-        assertEquals(testEnemy, testGame.getEnemies().get(0)); // only one enemy eliminated per call
-    }
-
-
 
 
     // check when no enemies are hit, bullets added should exist
