@@ -139,7 +139,7 @@ public class SurvivalGameApp {
             showDirection(e);
         }
 
-        System.out.print("\nBullet positions: ");
+        System.out.print("\nBullet positions: "); // show bullet positions
         for (Being b : game.getBullets()) {
             System.out.print(b.getPosX() + "," + b.getPosY() + ": ");
             showDirection(b);
@@ -190,7 +190,6 @@ public class SurvivalGameApp {
 
     /*
     EFFECTS: handles movement of player
-    MODIFIES: this
      */
     private void handlePlayer() throws InterruptedException {
         System.out.println("Use WASD to move player");

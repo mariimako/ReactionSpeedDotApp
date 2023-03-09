@@ -32,12 +32,12 @@ class JsonWriterTest {
     void testWriterEmptyWorkroom() {
         try {
             SGame gs = new SGame();
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterEmptyGameState.json");
             writer.open();
             writer.write(gs);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterEmptyWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterEmptyGameState.json");
             gs = reader.read();
             assertEquals(0, gs.getEnemies().size());
         } catch (IOException e) {
@@ -63,12 +63,12 @@ class JsonWriterTest {
             gs.getEnemies().add(testEnemies.get(0));
             gs.getEnemies().add(testEnemies.get(1));
 
-            JsonWriter writer = new JsonWriter("./data/testWriterGeneralWorkroom.json");
+            JsonWriter writer = new JsonWriter("./data/testWriterGeneralGameState.json");
             writer.open();
             writer.write(gs);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriterGeneralWorkroom.json");
+            JsonReader reader = new JsonReader("./data/testWriterGeneralGameState.json");
             gs = reader.read();
             checkLists(gs, testEnemies, testBullets);
 

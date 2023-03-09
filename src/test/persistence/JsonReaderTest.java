@@ -27,7 +27,7 @@ public class JsonReaderTest {
 
     @Test
     void testReaderGeneralWorkRoom() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralWorkRoom.json");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralGameState.json");
         try {
             SGame gs = reader.read();
             assertEquals(250, gs.getPlayer().getPosX());
@@ -67,6 +67,7 @@ public class JsonReaderTest {
         assertEquals(100, testEnemies.get(1).getPosY());
         assertTrue(testBullets.get(1).getVerticalMovement());
         assertEquals(1, testBullets.get(1).getDirection());
+
     }
 
 }

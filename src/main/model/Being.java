@@ -2,10 +2,11 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import persistence.Writable;
 
 // represents parent type of Enemy, Player and Bullet. Implements duplicate methods like move, collision and getters
 // does not currently have abstract methods, but plan to in the future, hence the class type
-public abstract class Being {
+public abstract class Being implements Writable {
     protected int posX;  // x position of player
     protected int posY;  // y position of player
     protected boolean verticalMovement; // when true, Being is moving up or down
@@ -55,6 +56,10 @@ public abstract class Being {
         }
     }
 
+    /*
+    EFFECTS: turns all objects to a json object, storing all relavant information
+     */
+    @Override
     public JSONObject toJson() {
         JSONObject obj = new JSONObject();
         obj.put("positionX", this.posX);
