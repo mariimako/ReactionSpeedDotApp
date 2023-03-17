@@ -158,7 +158,7 @@ public class SurvivalGameApp {
         int initX = Integer.valueOf(scanner.next());
         System.out.println("Enter y position to spawn enemy");
         int initY = Integer.valueOf(scanner.next());
-        game.spawnEnemy(initX, initY);
+        game.spawnEnemy();
         Thread.sleep(1500);
         System.out.println("You added an enemy at " + initX + ", " + initY);
         Thread.sleep(1500);
@@ -236,27 +236,4 @@ public class SurvivalGameApp {
             }
         }
     }
-
-    /* FUTURE IMPLEMENTATIONS (ignore)
-    public void move(KeyEvent e) {
-        model.Player player = new model.Player();
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
-                player.faceUp();
-                break;
-            case KeyEvent.VK_DOWN:
-                player.faceDown();
-                break;
-            case KeyEvent.VK_LEFT:
-                player.faceLeft();
-                break;
-            case KeyEvent.VK_RIGHT:
-                player.faceRight();
-                break;
-            case KeyEvent.VK_SPACE:
-                game.fireBullet();
-                break;
-        }
-    }
-     */
 }

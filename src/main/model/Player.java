@@ -4,8 +4,15 @@ package model;
 
 // Represents a user controlled player, with positions and health, extending the Being class
 
+import java.awt.*;
+
 public class Player extends Being {
+
     protected int health; // remaining health of player
+    private static final int SIZE_X = 15;
+    private static final int SIZE_Y = 8;
+    private static final int TANK_Y = SGame.HEIGHT - 40;
+    private static final Color COLOR = new Color(250, 128, 20);
 
     /*
      * EFFECTS: player is initialized at the initial position in the middle of screen, with 100 health
