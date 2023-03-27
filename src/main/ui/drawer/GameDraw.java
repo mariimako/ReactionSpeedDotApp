@@ -8,14 +8,14 @@ public class GameDraw {
 
     SGame playingGame;
 
-    private static final int PlAYER_SIZE_X = 30;
-    private static final int PLAYER_SIZE_Y = 30;
+    public static final int PLAYER_SIZE_X = 30;
+    public static final int PLAYER_SIZE_Y = 30;
 
-    private static final int BULLET_SIZE_X = 5;
-    private static final int BULLET_SIZE_Y = 8;
+    public static final int BULLET_SIZE_X = 5;
+    public static final int BULLET_SIZE_Y = 8;
 
-    private static final int ENEMY_SIZE_X = 30;
-    private static final int ENEMY_SIZE_Y = 50;
+    public static final int ENEMY_SIZE_X = 30;
+    public static final int ENEMY_SIZE_Y = 50;
 
 
     public GameDraw(SGame game) {
@@ -45,7 +45,7 @@ public class GameDraw {
 
 
     public void drawBeing(Graphics g, Being e) {
-        Color savedCol = g.getColor();
+        Color savedCol = e.getColor();
         if (e instanceof Enemy) {
             g.fillOval((int) e.getPosX() - ENEMY_SIZE_X / 2, (int) e.getPosY() - ENEMY_SIZE_Y / 2,
                     ENEMY_SIZE_X, ENEMY_SIZE_Y);
@@ -53,8 +53,8 @@ public class GameDraw {
             g.fillOval((int) e.getPosX() - BULLET_SIZE_X / 2, (int) e.getPosY() - BULLET_SIZE_Y / 2,
                     BULLET_SIZE_X, BULLET_SIZE_Y);
         } else if (e instanceof Player) {
-            g.fill3DRect((int) e.getPosX() - PlAYER_SIZE_X / 2, (int) e.getPosY() - PLAYER_SIZE_Y / 2,
-                    PlAYER_SIZE_X, PLAYER_SIZE_Y, false);
+            g.fill3DRect((int) e.getPosX() - PLAYER_SIZE_X / 2, (int) e.getPosY() - PLAYER_SIZE_Y / 2,
+                    PLAYER_SIZE_X, PLAYER_SIZE_Y, false);
         }
         g.setColor(e.getColor());
         g.setColor(savedCol);

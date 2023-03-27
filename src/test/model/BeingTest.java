@@ -2,6 +2,7 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import ui.drawer.GameDraw;
 
 import java.awt.*;
 
@@ -14,9 +15,12 @@ class BeingTest {
     private Being difPosPlayer2;
     private Being difPosPlayer3;
 
-    private Being difPosPlayer4;
-    private Being difPosPlayer5;
+    private Being difPosBeing4;
+    private Being difPosBeing5;
+    private Being difPosBeing6;
 
+
+    private GameDraw gd;
     @BeforeEach
     void runBefore() {
         testPlayer= new Player();
@@ -24,8 +28,13 @@ class BeingTest {
          difPosPlayer2 = new Player( (int) testPlayer.getPosX(), (int) testPlayer.getPosY()+100);
          difPosPlayer3 = new Player((int) testPlayer.getPosX() +
                 50, (int) testPlayer.getPosY() + 100);
-         difPosPlayer4 = new Player((int) testPlayer.getPosX(), (int) testPlayer.getPosY()+2);
-         difPosPlayer5 = new Player((int) testPlayer.getPosX()+300, (int) testPlayer.getPosY());
+        difPosBeing4 = new Bullet((int) testPlayer.getPosX() + GameDraw.BULLET_SIZE_X / 2,
+                 (int) testPlayer.getPosY() - GameDraw.BULLET_SIZE_Y / 2);
+        difPosBeing5 = new Enemy((int) testPlayer.getPosX() - GameDraw.ENEMY_SIZE_X / 2,
+                 (int) testPlayer.getPosY() + GameDraw.ENEMY_SIZE_Y / 2);
+        difPosBeing6 = new Player((int) testPlayer.getPosX() - GameDraw.PLAYER_SIZE_X / 2,
+                 (int) testPlayer.getPosY() + GameDraw.PLAYER_SIZE_Y / 2);
+
     }
 
     @Test
@@ -52,9 +61,16 @@ class BeingTest {
     @Test
     void collisionShapeTest() {
 
-        assertTrue(testPlayer.collidedWith(difPosPlayer4));
+        assertTrue(testPlayer.collidedWith(difPosBeing4));
+        assertTrue(testPlayer.collidedWith(difPosBeing5));
+        assertTrue(testPlayer.collidedWith(difPosBeing6));
+        difPosBeing6 = new Bullet(400, 250);
+        assertFalse(testPlayer.collidedWith(difPosBeing6));
 
-        assertFalse(testPlayer.collidedWith(difPosPlayer5));
+        difPosBeing6 = new Bullet(250, 400);
+        assertFalse(testPlayer.collidedWith(difPosBeing6));
+
+
 
     }
 

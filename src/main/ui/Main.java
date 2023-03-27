@@ -25,7 +25,6 @@ import ui.drawer.GameDraw;
 public class Main extends JFrame {
     private static final int INTERVAL = 20;
     private SGame game;
-    private GameDraw gd;
     private GamePanel gp;
     private Timer timer;
 
@@ -41,7 +40,6 @@ public class Main extends JFrame {
         setUndecorated(true);
         this.game = game;
         gp = new GamePanel(game);
-        gd = new GameDraw(game);
         gp.repaint();
         add(gp);
         addKeyListener(new KeyHandler());
@@ -155,7 +153,6 @@ public class Main extends JFrame {
             SGame game = jsonReader.read();
             JOptionPane.showMessageDialog(null, "Loaded. Press Enter to Continue");
             new Main(game);
-
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(Main.this, "Error reading file: "
                     + ex.getMessage());

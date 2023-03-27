@@ -25,6 +25,8 @@ public class GamePanel extends JPanel {
         setBackground(Color.WHITE);
         this.game = g;
         gd = new GameDraw(game);
+        repaint();
+        game.isPlaying();
     }
 
     /*

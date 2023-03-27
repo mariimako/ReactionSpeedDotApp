@@ -2,6 +2,7 @@ package model;
 
 import org.json.JSONObject;
 import persistence.Writable;
+import ui.drawer.GameDraw;
 
 import java.awt.*;
 
@@ -13,9 +14,6 @@ public abstract class Being implements Writable {
     protected double posY;  // y position of player
     protected boolean verticalMovement; // when true, Being is moving up or down
     protected int direction = 1; // positive 1 represents right or up, negative 1 represents left or down
-
-    protected static final int SIZE_X = 45;
-    protected static final int SIZE_Y = 24;
 
     protected Color color = new Color(250, 128, 20);
 
@@ -55,8 +53,22 @@ public abstract class Being implements Writable {
     EFFECTS: checks it this has collided with another being
      */
     public boolean collidedWith(Being e) {
-        if (e.getPosX() >= posX - e.SIZE_X / 2 && e.getPosX() <= posX + e.SIZE_X / 2
-                && e.getPosY() >= posY - e.SIZE_Y / 2 && e.getPosY() <= posY + e.SIZE_Y / 2) {
+
+        if (e instanceof Enemy && e.getPosX() >= posX - GameDraw.ENEMY_SIZE_X / 2
+                && e.getPosX() <= posX + GameDraw.ENEMY_SIZE_X  / 2
+                && e.getPosY() >= posY - GameDraw.ENEMY_SIZE_Y  / 2
+                && e.getPosY() <= posY + GameDraw.ENEMY_SIZE_Y  / 2
+                ||
+                (e instanceof Player && e.getPosX() >= posX - GameDraw.PLAYER_SIZE_X / 2
+                        && e.getPosX() <= posX + GameDraw.PLAYER_SIZE_X  / 2
+                        && e.getPosY() >= posY - GameDraw.PLAYER_SIZE_Y  / 2
+                        && e.getPosY() <= posY + GameDraw.PLAYER_SIZE_Y  / 2)
+                ||
+                (e instanceof Bullet && e.getPosX() >= posX - GameDraw.BULLET_SIZE_X / 2
+                        && e.getPosX() <= posX + GameDraw.BULLET_SIZE_X / 2
+                        && e.getPosY() >= posY - GameDraw.BULLET_SIZE_Y  / 2
+                        && e.getPosY() <= posY + GameDraw.BULLET_SIZE_Y  / 2)
+        ) {
             return true;
         } else {
             return false;
