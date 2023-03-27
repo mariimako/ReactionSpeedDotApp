@@ -1,10 +1,35 @@
 {
-    "enemies": [],
+    "enemies": [
+        {
+            "positionY": 137.34830471624468,
+            "verticalMovement": false,
+            "positionX": 227.76795140529677,
+            "direction": 1
+        },
+        {
+            "positionY": 170.87195443310418,
+            "verticalMovement": false,
+            "positionX": 209.67154246147783,
+            "direction": 1
+        },
+        {
+            "positionY": 192.78485320512382,
+            "verticalMovement": false,
+            "positionX": 200.70918946888244,
+            "direction": 1
+        },
+        {
+            "positionY": 219.96473589440143,
+            "verticalMovement": false,
+            "positionX": 116.89387901450517,
+            "direction": 1
+        }
+    ],
     "player": [{
-        "positionY": 100,
-        "verticalMovement": true,
-        "positionX": 172,
-        "direction": -1
+        "positionY": 114,
+        "verticalMovement": false,
+        "positionX": 329,
+        "direction": 1
     }],
     "bullets": []
 }

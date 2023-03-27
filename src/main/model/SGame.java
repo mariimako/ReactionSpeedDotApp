@@ -71,12 +71,12 @@ public class SGame implements Writable {
                 spawnEnemy();
                 apperancerate -= 1;
             }
-//            if (counter % SPEED_UP_RATE == 0) {
-//                for (Being b : beings) {
-//                    int newSpeed = b.getSpeed() + 1;
-//                    b.setSpeed(newSpeed);
-//                }
-//            }
+            if (counter % SPEED_UP_RATE == 0) {
+                for (Being b : beings) {
+                    int newSpeed = b.getSpeed() + 1;
+                    b.setSpeed(newSpeed);
+                }
+            }
             counter++;
         }
     }

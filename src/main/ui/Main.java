@@ -19,11 +19,13 @@ import javax.swing.Timer;
 import model.SGame;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+import ui.drawer.GameDraw;
 
 // class to run the game
 public class Main extends JFrame {
     private static final int INTERVAL = 20;
     private SGame game;
+    private GameDraw gd;
     private GamePanel gp;
     private Timer timer;
 
@@ -39,6 +41,8 @@ public class Main extends JFrame {
         setUndecorated(true);
         this.game = game;
         gp = new GamePanel(game);
+        gd = new GameDraw(game);
+        gp.repaint();
         add(gp);
         addKeyListener(new KeyHandler());
         pack();
@@ -147,9 +151,11 @@ public class Main extends JFrame {
     private void load() {
         try {
             timer.stop();
+            game.stopPlaying();
             SGame game = jsonReader.read();
             JOptionPane.showMessageDialog(null, "Loaded. Press Enter to Continue");
             new Main(game);
+
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(Main.this, "Error reading file: "
                     + ex.getMessage());

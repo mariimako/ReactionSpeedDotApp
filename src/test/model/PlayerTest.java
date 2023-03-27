@@ -14,7 +14,7 @@ class PlayerTest {
     @Test
     void decreaseHealthTest() {
         testPlayer.decreaseHealth(30);
-        assertEquals(70, testPlayer.health);
+        assertEquals(70, testPlayer.getHealth());
     }
 
     @Test
@@ -66,4 +66,6 @@ class PlayerTest {
         testPlayer.move();
         assertEquals(0+testPlayer.getSpeed(), testPlayer.getPosY());
     }
+
+
 }
