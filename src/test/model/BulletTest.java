@@ -22,7 +22,7 @@ class BulletTest {
     void runBefore() {
         testGame = new SGame();
         testPlayer = testGame.getPlayer();
-        testEnemy = new Enemy(SGame.HEIGHT/2+Being.SPEED*2,SGame.HEIGHT/2); // enemy two moves away
+        testEnemy = new Enemy(SGame.HEIGHT/2+3,SGame.HEIGHT/2); // enemy two moves away
         testBullet = new Bullet(testPlayer); // create bullet based off of gamestate player
 
     }
@@ -50,8 +50,8 @@ class BulletTest {
         assertEquals(testPlayer.getDirection(), testBullet.getDirection());
         assertEquals(1, testBullet.getDirection());
         assertFalse(testBullet.getVerticalMovement());
-        testBullet.move(); // moved 3 units, has not collided yet as enemy is 6 units away
-        assertFalse(testBullet.collidedWith(testEnemy));
+        testBullet.move(); // moved 3 units, has now collided because of rectangle size
+        assertTrue(testBullet.collidedWith(testEnemy));
         testBullet.move(); // moded 6 units, now should have collided
         assertTrue(testBullet.collidedWith(testEnemy));
     }

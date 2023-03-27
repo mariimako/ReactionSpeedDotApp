@@ -20,10 +20,10 @@ class PlayerTest {
     @Test
     void moveTest() {
         testPlayer.move(); // initially moving right
-        assertEquals(SGame.WIDTH / 2 + testPlayer.SPEED, testPlayer.getPosX());
+        assertEquals(SGame.WIDTH / 2 + testPlayer.getSpeed(), testPlayer.getPosX());
         testPlayer.faceUp(); //move upwards
         testPlayer.move();
-        assertEquals(SGame.HEIGHT / 2 + testPlayer.SPEED, testPlayer.getPosY());
+        assertEquals(SGame.HEIGHT / 2 + testPlayer.getSpeed(), testPlayer.getPosY());
         testPlayer.faceLeft(); //move leftwards
         testPlayer.move();
         assertEquals(SGame.WIDTH / 2, testPlayer.getPosX());
@@ -39,13 +39,13 @@ class PlayerTest {
         assertEquals(SGame.WIDTH, testPlayer.getPosX());
         testPlayer.faceLeft();
         testPlayer.move(); //  moving left
-        assertEquals(SGame.WIDTH - testPlayer.SPEED, testPlayer.getPosX());
+        assertEquals(SGame.WIDTH - testPlayer.getSpeed(), testPlayer.getPosX());
         testPlayer.faceUp(); // moving up, top boundary test
         testPlayer.move();
         assertEquals(SGame.HEIGHT, testPlayer.getPosY());
         testPlayer.faceDown(); // moving up
         testPlayer.move();
-        assertEquals(SGame.HEIGHT - testPlayer.SPEED, testPlayer.getPosY());
+        assertEquals(SGame.HEIGHT - testPlayer.getSpeed(), testPlayer.getPosY());
 
     }
 
@@ -57,13 +57,13 @@ class PlayerTest {
         assertEquals(0, testPlayer.getPosX());
         testPlayer.faceRight();
         testPlayer.move(); //  moving right
-        assertEquals(0 + testPlayer.SPEED, testPlayer.getPosX());
+        assertEquals(0 + testPlayer.getSpeed(), testPlayer.getPosX());
 
         testPlayer.faceDown(); // moving down, bottom boundary test
         testPlayer.move();
         assertEquals(0, testPlayer.getPosY());
         testPlayer.faceUp(); // moving up
         testPlayer.move();
-        assertEquals(0+testPlayer.SPEED, testPlayer.getPosY());
+        assertEquals(0+testPlayer.getSpeed(), testPlayer.getPosY());
     }
 }

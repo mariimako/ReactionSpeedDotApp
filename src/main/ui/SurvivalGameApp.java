@@ -183,7 +183,7 @@ public class SurvivalGameApp {
 
         showDirection(bullet);
 
-        System.out.println(" with velocity " + bullet.SPEED);
+        System.out.println(" with velocity " + bullet.getSpeed());
         System.out.println("You have now fired " + game.getBullets().size() + " bullet(s)!"); //gamestate stores bullets
         menu(); // go back to menu for more things to do
     }

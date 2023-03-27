@@ -1,28 +1,26 @@
 package model;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
 import java.awt.*;
 
+
 // represents parent type of Enemy, Player and Bullet. Implements duplicate methods like move, collision and getters
 // does not currently have abstract methods, but plan to in the future, hence the class type
 public abstract class Being implements Writable {
-    protected int posX;  // x position of player
-    protected int posY;  // y position of player
+    protected double posX;  // x position of player
+    protected double posY;  // y position of player
     protected boolean verticalMovement; // when true, Being is moving up or down
     protected int direction = 1; // positive 1 represents right or up, negative 1 represents left or down
 
-    protected int health; // remaining health of player
-    private static final int SIZE_X = 15;
-    private static final int SIZE_Y = 8;
-    private static final int TANK_Y = SGame.HEIGHT - 40;
-    private static final Color COLOR = new Color(250, 128, 20);
+    protected static final int SIZE_X = 45;
+    protected static final int SIZE_Y = 24;
 
-    public static final int SPEED = 3; // speed of all subtypes
+    protected Color color = new Color(250, 128, 20);
 
 
+    private int speed = 3; // speed of all subtypes
 
     /*
     EFFECTS: instantiates a being in a game that is facing right
@@ -47,9 +45,9 @@ public abstract class Being implements Writable {
      */
     public void move() {
         if (verticalMovement) {
-            posY = posY + direction * SPEED;
+            posY = posY + direction * this.speed;
         } else {
-            posX = posX + direction * SPEED;
+            posX = posX + direction * this.speed;
         }
     }
 
@@ -57,40 +55,12 @@ public abstract class Being implements Writable {
     EFFECTS: checks it this has collided with another being
      */
     public boolean collidedWith(Being e) {
-        if (e.getPosX() == posX && e.getPosY() == posY) {
+        if (e.getPosX() >= posX - e.SIZE_X / 2 && e.getPosX() <= posX + e.SIZE_X / 2
+                && e.getPosY() >= posY - e.SIZE_Y / 2 && e.getPosY() <= posY + e.SIZE_Y / 2) {
             return true;
         } else {
             return false;
         }
-    }
-
-    // Draws the sprite
-    // modifies: g
-    // effects: draws the sprite on the Graphics object g
-    public void draw(Graphics g) {
-        Color savedCol = g.getColor();
-        g.setColor(COLOR);
-        g.fillRect(getPosX() - SIZE_X / 2, getPosY() - SIZE_Y / 2, SIZE_X, SIZE_Y);
-        Polygon tankFront = createTankFront();
-        g.fillPolygon(tankFront);
-        g.setColor(savedCol);
-    }
-
-    // EFFECTS: returns a polygon that represents front of tank
-    private Polygon createTankFront() {
-        Polygon tankFront = new Polygon();
-
-        if (direction == 1) {
-            tankFront.addPoint(posX + SIZE_X / 2, TANK_Y + SIZE_Y / 2);
-            tankFront.addPoint(posX + SIZE_X, TANK_Y);
-            tankFront.addPoint(posX + SIZE_X / 2, TANK_Y - SIZE_Y / 2);
-        } else {
-            tankFront.addPoint(posX - SIZE_X / 2, TANK_Y + SIZE_Y / 2);
-            tankFront.addPoint(posX - SIZE_X, TANK_Y);
-            tankFront.addPoint(posX - SIZE_X / 2, TANK_Y - SIZE_Y / 2);
-        }
-
-        return tankFront;
     }
 
     /*
@@ -107,11 +77,11 @@ public abstract class Being implements Writable {
     }
 
 
-    public int getPosX() {
+    public double getPosX() {
         return posX;
     }
 
-    public int getPosY() {
+    public double getPosY() {
         return posY;
     }
 
@@ -127,7 +97,24 @@ public abstract class Being implements Writable {
         this.direction = direction;
     }
 
+
     public void setVerticalMovement(boolean verticalMovement) {
         this.verticalMovement = verticalMovement;
+    }
+
+    public int getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return this.color;
     }
 }

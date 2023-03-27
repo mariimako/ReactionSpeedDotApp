@@ -9,10 +9,6 @@ import java.awt.*;
 public class Player extends Being {
 
     protected int health; // remaining health of player
-    private static final int SIZE_X = 15;
-    private static final int SIZE_Y = 8;
-    private static final int TANK_Y = SGame.HEIGHT - 40;
-    private static final Color COLOR = new Color(250, 128, 20);
 
     /*
      * EFFECTS: player is initialized at the initial position in the middle of screen, with 100 health
@@ -42,6 +38,24 @@ public class Player extends Being {
         super.move();
         handleBoundary();
     }
+
+    /* MODIFIES: this
+     * EFFECTS: stops player if at boundary, for both top/bottom and right/left
+     */
+    public void handleBoundary() {
+        if (posX < 0) { //at the left boundary
+            posX = 0; // don't move player anymore
+        } else if (posX >= SGame.WIDTH) { // at right boundary
+            posX = SGame.WIDTH; // don't move player anymore
+        }
+
+        if (posY <= 0) { // at bottom
+            posY = 0;
+        } else if (posY > SGame.HEIGHT) { //at top
+            posY = SGame.HEIGHT;
+        }
+    }
+
 
 
     /*
@@ -81,7 +95,6 @@ public class Player extends Being {
         direction = -1;
     }
 
-    // not used for current user stories
     /*
      * MODIFIES: this
      * EFFECTS: decreases health of player by the damage input
@@ -90,23 +103,7 @@ public class Player extends Being {
         health -= damage;
     }
 
-
-    // not required for current user stories
-    /* MODIFIES: this
-     * EFFECTS: stops player if at boundary, for both top/bottom and right/left
-     */
-    public void handleBoundary() {
-        if (posX < 0) { //at the left boundary
-            posX = 0; // don't move player anymore
-        } else if (posX >= SGame.WIDTH) { // at right boundary
-            posX = SGame.WIDTH; // don't move player anymore
-        }
-
-        if (posY <= 0) { // at bottom
-            posY = 0;
-        } else if (posY > SGame.HEIGHT) { //at top
-            posY = SGame.HEIGHT;
-        }
+    public int getHealth() {
+        return health;
     }
-
 }

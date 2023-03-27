@@ -5,27 +5,35 @@ import org.json.JSONObject;
 
 import persistence.Writable;
 
-import java.awt.event.KeyEvent;
+import java.awt.*;
 import java.util.ArrayList;
-import java.awt.Graphics;
 import java.util.Random;
 
 
 // represents game state. updates game to change player, bullet position and spawns enemies sometimes
 public class SGame implements Writable {
 
-    private ArrayList<Enemy> enemies; // a list of enemies present in the gamestate that has spawned
-    private ArrayList<Bullet> bullets; // a list of bullets that exists in the gamestate
+    protected ArrayList<Enemy> enemies; // a list of enemies present in the gamestate that has spawned
+    protected ArrayList<Bullet> bullets; // a list of bullets that exists in the gamestate
+    protected ArrayList<Being> beings;
+
     private Player player; // represents the player
 
-    private ArrayList<Being> beings;
+    protected static final int SIZE_X = 45;
+    protected static final int SIZE_Y = 24;
+    protected Color color = new Color(250, 128, 20);
+
     public static final int HEIGHT = 500; // height of gamestate
     public static final int WIDTH = 500; // width of gamestate
 
     private static final int COLLISION_DAMAGE = 20; // NOT USED YET collision damage when a player hits an enemy
-    private static final int APPEARANCE_RATE = 150; // appearance rate of enemies
+    protected int apperancerate = 50; // appearance rate of enemies
 
-    private int counter; //NOT USED YET a counter to keep track when to spawn enemies
+    protected static final int SPEED_UP_RATE = 200;
+    protected static final int SPAWN_RATE = 150;
+
+
+    protected int counter; // a counter to keep track when to spawn enemies
 
     private Boolean playing; //represents if playing or not
 
@@ -42,7 +50,35 @@ public class SGame implements Writable {
         beings.addAll(bullets);
         beings.add(player);
         playing = true;
+    }
 
+        /*
+    MODIFIES: this
+    EFFECTS: updates gamestate to move all objects and sometimes spawn enemies, speed up beings
+    and increase spawn rate
+     */
+
+    public void update() {
+        if (playing) {
+            player.move();
+            moveBullets();
+            checkCollisions();
+            checkGameOver();
+            for (Enemy e : enemies) {
+                e.enemyUpdate(player);
+            }
+            if (counter % SPAWN_RATE == apperancerate) {
+                spawnEnemy();
+                apperancerate -= 1;
+            }
+//            if (counter % SPEED_UP_RATE == 0) {
+//                for (Being b : beings) {
+//                    int newSpeed = b.getSpeed() + 1;
+//                    b.setSpeed(newSpeed);
+//                }
+//            }
+            counter++;
+        }
     }
 
     /*
@@ -73,6 +109,7 @@ public class SGame implements Writable {
             if (b.getPosX() <= 0 | b.getPosX() >= WIDTH | b.getPosY() >= HEIGHT | b.getPosY() <= 0) {
                 bullets.remove(b); // remove if at boundary
                 beings.remove(b); // remove if at boundary
+                b.setColor(Color.GRAY);
                 break; // once boundary is removed, exit loop, only one bullet should be removed per call
             }
             for (Enemy e: enemies) {
@@ -81,6 +118,8 @@ public class SGame implements Writable {
                     enemies.remove(e);
                     beings.remove(b);
                     beings.remove(e);
+                    e.setColor(Color.GRAY);
+                    b.setColor(Color.GRAY);
                     break outer; //once collided enemy found, exit loop, as only one should be removed
                 }
             }
@@ -96,7 +135,6 @@ public class SGame implements Writable {
         Bullet b = new Bullet(player);
         bullets.add(b);
         beings.add(b);
-
     }
 
 
@@ -130,49 +168,6 @@ public class SGame implements Writable {
         return json;
     }
 
-    public void draw(Graphics g) {
-        for (Being sprite : beings) {
-            sprite.draw(g);
-        }
-    }
-
-
-
-    public Player getPlayer() {
-        return this.player;
-    }
-
-    public void setPlayer(Player p) {
-        this.player = p;
-    }
-
-    public Boolean isPlaying() {
-        return playing;
-    }
-
-    public ArrayList<Bullet> getBullets() {
-        return bullets;
-    }
-
-    public ArrayList<Enemy> getEnemies() {
-        return enemies;
-    }
-
-    public void stopPlaying() {
-        this.playing = false;
-    }
-
-
-
-
-
-    // THE FOLLOWING METHODS ARE NOT USED TO SATIDY USER STORIES,
-    // BUT WILL BE USED LATER IN THE PROJECT AS GRAPHICAL INTERFACE IS
-    // IMPLEMENTED
-    // IGNORE ALL IMPLEMENTATIONS AS THEY DO NOT CONTRIBUTE TO CURRENT USER STORIES
-
-
-
     /*
     MODIFIES: this
     EFFECTS: game stops if player health is 0
@@ -195,11 +190,10 @@ public class SGame implements Writable {
 
     /*
     MODIFIES: this
-    EFFECTS: if player is collided with enemy, damage the player
-    NOT USED, FOR FUTURE IMPLEMENTATION
+    EFFECTS: if player is collided with enemy, damage the player, only one enemy can collide at once
     */
 
-    private void checkPlayer() {
+    protected void checkPlayer() {
         for (Enemy e: enemies) {
             if (player.collidedWith(e)) {
                 player.decreaseHealth(COLLISION_DAMAGE);
@@ -221,42 +215,37 @@ public class SGame implements Writable {
         checkPlayer();
     }
 
-    /*
-    MODIFIES: this
-    EFFECTS: updates gamestate to move all objects and sometimes spawn enemies
-
-    NOT USED, FUTURE IMPLEMENTATION
-     */
-
-    public void update() {
-        player.move();
-        moveBullets();
-        checkCollisions();
-        checkGameOver();
-        counter++;
-        if (counter % APPEARANCE_RATE == 0) {
-            spawnEnemy();
-        }
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
-    // Responds to key press codes
-    // modifies: this
-    // effects:  turns tank, fires missiles and resets game in response to
-    //           given key pressed code
-    public void keyPressed(int keyCode) {
-        if (keyCode == KeyEvent.VK_KP_LEFT || keyCode == KeyEvent.VK_LEFT) {
-            player.faceLeft();
-        } else if (keyCode == KeyEvent.VK_KP_RIGHT || keyCode == KeyEvent.VK_RIGHT) {
-            player.faceRight();
-        } else if (keyCode == KeyEvent.VK_SPACE) {
-            fireBullet();
-        } else if (keyCode == KeyEvent.VK_KP_UP || keyCode == KeyEvent.VK_UP) {
-            player.faceDown();
-        } else if (keyCode == KeyEvent.VK_KP_DOWN || keyCode == KeyEvent.VK_DOWN) {
-            player.faceUp();
-        } else if (keyCode == KeyEvent.VK_X) {
-            System.exit(0);
-        }
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public void setPlayer(Player p) {
+        this.player = p;
+    }
+
+    public Boolean isPlaying() {
+        return playing;
+    }
+
+    public ArrayList<Bullet> getBullets() {
+        return bullets;
+    }
+
+    public ArrayList<Enemy> getEnemies() {
+        return enemies;
+    }
+
+    public ArrayList<Being> getBeings() {
+        return beings;
+    }
+
+
+    public void stopPlaying() {
+        this.playing = false;
     }
 
 }

@@ -1,20 +1,10 @@
 {
-    "enemies": [{
-        "positionY": 200,
-        "verticalMovement": false,
-        "positionX": 100,
-        "direction": 1
-    }],
+    "enemies": [],
     "player": [{
-        "positionY": 250,
-        "verticalMovement": false,
-        "positionX": 247,
+        "positionY": 100,
+        "verticalMovement": true,
+        "positionX": 172,
         "direction": -1
     }],
-    "bullets": [{
-        "positionY": 250,
-        "verticalMovement": false,
-        "positionX": 253,
-        "direction": 1
-    }]
+    "bullets": []
 }
