@@ -62,13 +62,36 @@ class BeingTest {
     void collisionShapeTest() {
 
         assertTrue(testPlayer.collidedWith(difPosBeing4));
-        assertTrue(testPlayer.collidedWith(difPosBeing5));
-        assertTrue(testPlayer.collidedWith(difPosBeing6));
-        difPosBeing6 = new Bullet(400, 250);
-        assertFalse(testPlayer.collidedWith(difPosBeing6));
+        difPosBeing4 = new Bullet ((int) testPlayer.getPosX() - GameDraw.BULLET_SIZE_X / 2,
+                (int) testPlayer.getPosY());
+        assertTrue(testPlayer.collidedWith(difPosBeing4));
 
-        difPosBeing6 = new Bullet(250, 400);
-        assertFalse(testPlayer.collidedWith(difPosBeing6));
+        difPosBeing4 = new Bullet ((int) testPlayer.getPosX(),
+                (int) testPlayer.getPosY() - GameDraw.BULLET_SIZE_Y / 2);
+        assertTrue(testPlayer.collidedWith(difPosBeing4));
+
+
+
+        assertTrue(testPlayer.collidedWith(difPosBeing5));
+        difPosBeing5 = new Enemy((int) testPlayer.getPosX(),
+                (int) testPlayer.getPosY() - GameDraw.ENEMY_SIZE_Y / 2);
+        assertTrue(testPlayer.collidedWith(difPosBeing5));
+        difPosBeing5 = new Enemy((int) testPlayer.getPosX(),
+                (int) testPlayer.getPosY() + GameDraw.ENEMY_SIZE_Y / 2);
+        assertTrue(testPlayer.collidedWith(difPosBeing5));
+
+
+
+        assertTrue(testPlayer.collidedWith(difPosBeing6));
+        difPosBeing6 = new Player((int) testPlayer.getPosX() - GameDraw.PLAYER_SIZE_X / 2,
+                (int) testPlayer.getPosY());
+        assertTrue(testPlayer.collidedWith(difPosBeing6));
+
+
+        difPosBeing6 = new Player((int) testPlayer.getPosX(),
+                (int) testPlayer.getPosY() + GameDraw.PLAYER_SIZE_Y / 2);
+
+        assertTrue(testPlayer.collidedWith(difPosBeing6));
 
 
 
