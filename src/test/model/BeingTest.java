@@ -96,6 +96,10 @@ class BeingTest {
                 (int) difPosBeing4.getPosY() - GameDraw.ENEMY_SIZE_Y / 2 - 10);
         assertFalse(testPlayer.collidedWith(difPosBeing4));
 
+        testPlayer = new Player((int) difPosBeing4.posX,
+                (int) difPosBeing4.getPosY() + GameDraw.ENEMY_SIZE_Y / 2 + 10);
+        assertFalse(testPlayer.collidedWith(difPosBeing4));
+
     }
 
     @Test
