@@ -54,10 +54,10 @@ public abstract class Being implements Writable {
      */
     public boolean collidedWith(Being e) {
 
-        if (e.getPosX() >= posX - GameDraw.ENEMY_SIZE_X / 2
-                && e.getPosX() <= posX + GameDraw.ENEMY_SIZE_X  / 2
-                && e.getPosY() >= posY - GameDraw.ENEMY_SIZE_Y  / 2
-                && e.getPosY() <= posY + GameDraw.ENEMY_SIZE_Y  / 2) {
+        if ((int) e.getPosX() >= (int) posX - GameDraw.ENEMY_SIZE_X / 2
+                && (int) e.getPosX() <= (int) posX + GameDraw.ENEMY_SIZE_X  / 2
+                && (int) e.getPosY() >= (int) posY - GameDraw.ENEMY_SIZE_Y  / 2
+                && (int) e.getPosY() <= (int) posY + GameDraw.ENEMY_SIZE_Y  / 2) {
             return true;
         } else {
             return false;
