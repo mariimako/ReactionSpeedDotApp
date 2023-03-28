@@ -85,9 +85,12 @@ class BeingTest {
 
         difPosBeing6 = new Player((int) testPlayer.getPosX(),
                 (int) testPlayer.getPosY() + GameDraw.PLAYER_SIZE_Y / 2);
-
         assertTrue(testPlayer.collidedWith(difPosBeing6));
 
+        assertTrue(testPlayer.collidedWith(difPosBeing4));
+        difPosBeing4 = new Bullet ((int) testPlayer.getPosX(),
+                (int) testPlayer.getPosY() - GameDraw.ENEMY_SIZE_Y / 2);
+        assertTrue(testPlayer.collidedWith(difPosBeing4));
     }
 
     @Test
