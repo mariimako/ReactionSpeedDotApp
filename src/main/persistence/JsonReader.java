@@ -64,20 +64,30 @@ public class JsonReader {
         int posY = jsonObject.getInt("positionY");
         Boolean verticalMovement = jsonObject.getBoolean("verticalMovement");
         int direction = jsonObject.getInt("direction");
+        int speed = jsonObject.getInt("speed");
+        addToGame(gs,beingType,direction, verticalMovement,posX,posY,speed);
+    }
 
+    private void addToGame(SGame gs, String beingType, int direction, Boolean verticalMovement,
+                           int posX, int posY, int speed) {
         if (beingType == "enemies") {
             Enemy e = new Enemy(posX, posY);
             e.setVerticalMovement(verticalMovement);
             e.setDirection(direction);
+            e.setSpeed(speed);
             gs.getEnemies().add(e);
+            gs.getBeings().add(e);
         } else if (beingType == "bullets") {
             Bullet b = new Bullet(posX, posY);
             b.setVerticalMovement(verticalMovement);
             b.setDirection(direction);
+            b.setSpeed(speed);
             gs.getBullets().add(b);
+            gs.getBeings().add(b);
         } else {
             Player p = new Player(posX, posY);
             p.setVerticalMovement(verticalMovement);
+            p.setSpeed(speed);
             p.setDirection(direction);
             gs.setPlayer(p);
         }

@@ -72,15 +72,16 @@ class SGameTest {
             assertFalse(gs.getPlayer().getVerticalMovement());
 
             assertEquals("{\"enemies\":" +
-                    "[{\"positionY\":1,\"verticalMovement\":false," +
+                    "[{\"positionY\":1,\"verticalMovement\":false,\"speed\":3," +
                     "\"positionX\":1,\"direction\":1}," +
-                    "{\"positionY\":100,\"verticalMovement\":false," +
-                    "\"positionX\":100,\"direction\":1}]", gs.toJson().toString().substring(0,154));
+                    "{\"positionY\":100,\"verticalMovement\":false,\"speed\":3," +
+                    "\"positionX\"", gs.toJson().toString().substring(0,154));
 
-            assertEquals(",\"player\":[{\"positionY\":250,\"verticalMovement\":false," +
+            assertEquals(":100,\"direction\":1}],\"player\":[{\"positionY\":250,\"verticalMovement\":false," +
+                    "\"speed\":3," +
                     "\"positionX\":250,\"direction\":1}],\"bullets\":[{\"positionY\":20,\"verticalMovement\":false," +
-                    "\"positionX\":10,\"direction\":1},{\"positionY\":40,\"verticalMovement\":false,\"positionX\":30," +
-                    "\"direction\":1}]}", gs.toJson().toString().substring(154,393));
+                    "\"speed\":3,\"positionX\":10,\"direction\":1},{\"positionY\":40,\"verticalMovemen",
+                    gs.toJson().toString().substring(154,393));
 
             writer.open();
             writer.write(gs);

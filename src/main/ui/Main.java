@@ -10,6 +10,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -39,13 +41,13 @@ public class Main extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(true);
         this.game = game;
-        gp = new GamePanel(game);
-        gp.repaint();
+        gp = new GamePanel(this.game);
         add(gp);
+        gp.repaint();
         addKeyListener(new KeyHandler());
         pack();
-        centreOnScreen();
         setVisible(true);
+        centreOnScreen();
         addTimer();
         timer.start();
     }
@@ -110,19 +112,59 @@ public class Main extends JFrame {
      */
     private void pauseMenu() {
         timer.stop();
-        String input = JOptionPane.showInputDialog(null, "Load or Save (l/s), "
-                + "or return to game by pressing any other key");
-
-        if (input.charAt(0) == ('l')) {
+        String opt = options();
+        if (opt.equals("Load")) {
             load();
-        } else if (input.charAt(0) == ('s')) {
+        } else if (opt.equals("Save")) {
             save();
+        } else if (opt.equals("Speed Up!")) {
+            speedUp();
         } else {
             JOptionPane.showMessageDialog(Main.this, "Returning to Game");
             timer.start();
         }
     }
 
+    private String options() {
+        List<String> optionList = new ArrayList<>();
+        optionList.add("Save");
+        optionList.add("Load");
+        optionList.add("Speed Up!");
+        Object[] options = optionList.toArray();
+        int value = JOptionPane.showOptionDialog(
+                null,
+                "Save, Load or Speed Up The Game",
+                "Options",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                optionList.get(0));
+        return optionList.get(value);
+
+    }
+
+
+    /*
+    EFFECTS: speed up game as much as the user specified, but recommend not to go over 20
+    MODIFIES: game
+     */
+    private void speedUp() {
+        String input = JOptionPane.showInputDialog(Main.this,
+                "How Much Faster?");
+        int speedUp = Integer.parseInt(input);
+
+        if (speedUp >= 20) {
+            JOptionPane.showMessageDialog(Main.this,
+                    "Try Something Smaller...");
+            pauseMenu();
+        } else {
+            while (game.getPlayer().getSpeed() <= speedUp) {
+                game.speedUp();
+            }
+        }
+        timer.start();
+    }
 
     /*
     MODIFIES: this
@@ -149,16 +191,23 @@ public class Main extends JFrame {
     private void load() {
         try {
             timer.stop();
-            game.stopPlaying();
-            SGame game = jsonReader.read();
-            JOptionPane.showMessageDialog(null, "Loaded. Press Enter to Continue");
-            new Main(game);
+            JOptionPane.showMessageDialog(null, "Loaded");
+            reset(jsonReader.read());
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(Main.this, "Error reading file: "
                     + ex.getMessage());
         }
     }
 
+    public void reset(SGame game) {
+        remove(gp);
+        this.game = game;
+        gp = new GamePanel(this.game);
+        add(gp);
+        gp.repaint();
+        timer.restart();
+        pack();
+    }
 
     // Play the game
     public static void main(String[] args) {

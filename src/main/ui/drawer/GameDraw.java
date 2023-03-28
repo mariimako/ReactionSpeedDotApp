@@ -19,7 +19,7 @@ public class GameDraw {
 
 
     public GameDraw(SGame game) {
-        playingGame = game;
+        this.playingGame = game;
     }
 
     /*
@@ -28,11 +28,13 @@ public class GameDraw {
     */
     public void draw(Graphics g) {
         for (Being sprite : playingGame.getBeings()) {
-            drawBeing(g, sprite);
+            if (!(sprite instanceof Player)) {
+                drawBeing(g, sprite);
+            }
         }
 
         Color saved = g.getColor();
-        g.setColor(new Color(0, 0, 0));
+        g.setColor(new Color(0,0,0));
         g.setFont(new Font("Arial", Font.BOLD, 20));
         FontMetrics fm = g.getFontMetrics();
         String str = "Current Enemies: " + playingGame.getEnemies().size();
@@ -41,11 +43,12 @@ public class GameDraw {
         g.drawString(str,  0, SGame.HEIGHT);
         g.setColor(saved);
 
+        drawBeing(g, playingGame.getPlayer());
     }
 
 
     public void drawBeing(Graphics g, Being e) {
-        Color savedCol = e.getColor();
+        Color savedCol = g.getColor();
         if (e instanceof Enemy) {
             g.fillOval((int) e.getPosX() - ENEMY_SIZE_X / 2, (int) e.getPosY() - ENEMY_SIZE_Y / 2,
                     ENEMY_SIZE_X, ENEMY_SIZE_Y);
@@ -56,6 +59,7 @@ public class GameDraw {
             g.fill3DRect((int) e.getPosX() - PLAYER_SIZE_X / 2, (int) e.getPosY() - PLAYER_SIZE_Y / 2,
                     PLAYER_SIZE_X, PLAYER_SIZE_Y, false);
         }
+
         g.setColor(e.getColor());
         g.setColor(savedCol);
     }

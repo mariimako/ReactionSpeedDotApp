@@ -7,7 +7,7 @@ import java.awt.*;
 // represents a bullet shot by players that eliminate enemies when it hits them
 public class Bullet extends Being {
 
-    protected Color color;
+    protected Color color = new Color(103, 37, 11);
 
     /*
     EFFECTS: instantiates bullet that is the same as the player for direction, position
@@ -18,7 +18,6 @@ public class Bullet extends Being {
         this.posX = player.getPosX();
         this.posY = player.getPosY();
         this.setSpeed(5);
-        color = new Color(128, 50, 20);
     }
 
     /*

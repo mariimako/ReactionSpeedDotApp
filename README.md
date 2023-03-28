@@ -24,7 +24,7 @@ Inspiration for saving and loading using Json
 
 ## User Stories
 - As a user, I want to be able to move in four directions in the game, and see my current position as a player
-- As a user, I want to add enemies to a list of enemies where I can see how many there are
+- As a user, I want to have enemies spawn randomly to a list of enemies where I can see how many there are
 - As a user, I want to be able to fire bullets from my current position (player position) many times,
 - As a user, I want to be able to move bullets in their respective directions 
 - As a user, I want to be able eliminate enemies and see that I did so
@@ -39,7 +39,7 @@ Inspiration for saving and loading using Json
 - Enemies will spawn randomly in intervals.
 - Note that you should gradually speed up.
 - Press escape to pause the game and open an menu.
-- As prompted, save or load the game.
+- As prompted, save or load the game, or speed up the game.
 - After exiting the popup window, you should have the most recent saved state loaded, 
 - or the game saved and continue playing the current version
 - When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit

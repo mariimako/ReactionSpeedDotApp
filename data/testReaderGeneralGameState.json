@@ -4,33 +4,38 @@
       "positionY": 1,
       "positionX": 1,
       "verticalMovement": false,
-      "direction": 1
+      "direction": 1,
+      "speed": 17
     },
     {
       "positionY": 100,
       "positionX": 100,
       "verticalMovement": true,
-      "direction": 1
+      "direction": 1,
+      "speed": 17
     }
   ],
   "player": [{
     "positionY": 250,
     "positionX": 250,
     "verticalMovement": true,
-    "direction": 1
+    "direction": 1,
+    "speed": 17
   }],
   "bullets": [
     {
       "positionY": 20,
       "positionX": 10,
       "verticalMovement": false,
-      "direction": -1
+      "direction": -1,
+      "speed": 17
     },
     {
       "positionY": 40,
       "positionX": 30,
       "verticalMovement": true,
-      "direction": 1
+      "direction": 1,
+      "speed": 17
     }
   ]
 }

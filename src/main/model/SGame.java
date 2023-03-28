@@ -72,12 +72,16 @@ public class SGame implements Writable {
                 apperancerate -= 1;
             }
             if (counter % SPEED_UP_RATE == 0) {
-                for (Being b : beings) {
-                    int newSpeed = b.getSpeed() + 1;
-                    b.setSpeed(newSpeed);
-                }
+                speedUp();
             }
             counter++;
+        }
+    }
+
+    public void speedUp() {
+        for (Being b : beings) {
+            int newSpeed = b.getSpeed() + 1;
+            b.setSpeed(newSpeed);
         }
     }
 

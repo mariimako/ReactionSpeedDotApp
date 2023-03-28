@@ -54,21 +54,10 @@ public abstract class Being implements Writable {
      */
     public boolean collidedWith(Being e) {
 
-        if (e instanceof Enemy && e.getPosX() >= posX - GameDraw.ENEMY_SIZE_X / 2
+        if (e.getPosX() >= posX - GameDraw.ENEMY_SIZE_X / 2
                 && e.getPosX() <= posX + GameDraw.ENEMY_SIZE_X  / 2
                 && e.getPosY() >= posY - GameDraw.ENEMY_SIZE_Y  / 2
-                && e.getPosY() <= posY + GameDraw.ENEMY_SIZE_Y  / 2
-                ||
-                (e instanceof Player && e.getPosX() >= posX - GameDraw.PLAYER_SIZE_X / 2
-                        && e.getPosX() <= posX + GameDraw.PLAYER_SIZE_X  / 2
-                        && e.getPosY() >= posY - GameDraw.PLAYER_SIZE_Y  / 2
-                        && e.getPosY() <= posY + GameDraw.PLAYER_SIZE_Y  / 2)
-                ||
-                (e instanceof Bullet && e.getPosX() >= posX - GameDraw.BULLET_SIZE_X / 2
-                        && e.getPosX() <= posX + GameDraw.BULLET_SIZE_X / 2
-                        && e.getPosY() >= posY - GameDraw.BULLET_SIZE_Y  / 2
-                        && e.getPosY() <= posY + GameDraw.BULLET_SIZE_Y  / 2)
-        ) {
+                && e.getPosY() <= posY + GameDraw.ENEMY_SIZE_Y  / 2) {
             return true;
         } else {
             return false;
@@ -85,6 +74,7 @@ public abstract class Being implements Writable {
         obj.put("positionY", this.posY);
         obj.put("direction", this.direction);
         obj.put("verticalMovement", this.verticalMovement);
+        obj.put("speed", this.speed);
         return obj;
     }
 

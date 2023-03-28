@@ -3,6 +3,7 @@
     "player": [{
         "positionY": 250,
         "verticalMovement": false,
+        "speed": 3,
         "positionX": 250,
         "direction": 1
     }],

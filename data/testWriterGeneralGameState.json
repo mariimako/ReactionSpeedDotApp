@@ -3,12 +3,14 @@
         {
             "positionY": 1,
             "verticalMovement": false,
+            "speed": 3,
             "positionX": 1,
             "direction": 1
         },
         {
             "positionY": 100,
             "verticalMovement": false,
+            "speed": 3,
             "positionX": 100,
             "direction": 1
         }
@@ -16,6 +18,7 @@
     "player": [{
         "positionY": 250,
         "verticalMovement": false,
+        "speed": 3,
         "positionX": 250,
         "direction": 1
     }],
@@ -23,12 +26,14 @@
         {
             "positionY": 20,
             "verticalMovement": false,
+            "speed": 3,
             "positionX": 10,
             "direction": 1
         },
         {
             "positionY": 40,
             "verticalMovement": false,
+            "speed": 3,
             "positionX": 30,
             "direction": 1
         }
