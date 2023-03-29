@@ -32,21 +32,6 @@ public class GameDraw {
             }
         }
 
-        Color saved = g.getColor();
-        g.setColor(new Color(0,0,0));
-        g.setFont(new Font("Arial", Font.BOLD, 20));
-        FontMetrics fm = g.getFontMetrics();
-        String str = "Current Enemies: " + playingGame.getEnemies().size();
-        g.drawString(str, SGame.WIDTH - fm.stringWidth(str), SGame.HEIGHT);
-        str = "Current Health: " + playingGame.getPlayer().getHealth();
-        g.drawString(str,  0, SGame.HEIGHT);
-        str = "Bullets Being Fired: " + playingGame.getBullets().size();
-        g.drawString(str,  SGame.WIDTH - fm.stringWidth(str), 20);
-        g.setFont(new Font("Arial", Font.BOLD, 15));
-        str = "ESC to Pause, Arrow Keys for Control";
-        g.drawString(str,  0, 15);
-        g.setColor(saved);
-
         drawBeing(g, playingGame.getPlayer());
     }
 

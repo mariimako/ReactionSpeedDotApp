@@ -2,8 +2,7 @@ package ui;
 
 
 import javax.swing.*;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -26,6 +25,7 @@ public class Main extends JFrame {
     private static final int INTERVAL = 20;
     private SGame game;
     private GamePanel gp;
+    private StatePanel sp;
     private Timer timer;
 
     private static final String JSON_STORE = "./data/gamestate.json";
@@ -40,7 +40,9 @@ public class Main extends JFrame {
         setUndecorated(true);
         this.game = game;
         gp = new GamePanel(this.game);
+        sp = new StatePanel(this.game);
         add(gp);
+        add(sp, BorderLayout.NORTH);
         gp.repaint();
         addKeyListener(new KeyHandler());
         pack();
@@ -60,6 +62,7 @@ public class Main extends JFrame {
                 if (game.isPlaying()) {
                     game.update();
                     gp.repaint();
+                    sp.update();
                 }
 
             }
@@ -116,7 +119,7 @@ public class Main extends JFrame {
             load();
         } else if (opt.equals("Save")) {
             save();
-        } else if (opt.equals("Speed Up!")) {
+        } else if (opt.equals("Set Speed!")) {
             speedUp();
         } else {
             JOptionPane.showMessageDialog(Main.this, "Returning to Game");
@@ -131,11 +134,11 @@ public class Main extends JFrame {
         List<String> optionList = new ArrayList<>();
         optionList.add("Save");
         optionList.add("Load");
-        optionList.add("Speed Up!");
+        optionList.add("Set Speed!");
         Object[] options = optionList.toArray();
         int value = JOptionPane.showOptionDialog(
                 null,
-                "Save, Load or Speed Up The Game",
+                "Save, Load or Set Speed of Bullet and Player",
                 "Options",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
@@ -153,18 +156,13 @@ public class Main extends JFrame {
      */
     private void speedUp() {
         String input = JOptionPane.showInputDialog(Main.this,
-                "How Much Faster?");
+                "To what?");
         int speedUp = Integer.parseInt(input);
 
-        if (speedUp >= 20) {
-            JOptionPane.showMessageDialog(Main.this,
-                    "Try Something Smaller...");
-            pauseMenu();
-        } else {
-            while (game.getPlayer().getSpeed() <= speedUp) {
-                game.speedUp();
-            }
+        while (game.getPlayer().getSpeed() < speedUp) {
+            game.speedUp();
         }
+
         timer.start();
     }
 
@@ -209,7 +207,9 @@ public class Main extends JFrame {
         remove(gp);
         this.game = game;
         gp = new GamePanel(this.game);
+        sp = new StatePanel(this.game);
         add(gp);
+        add(sp, BorderLayout.NORTH);
         gp.repaint();
         timer.restart();
         pack();
