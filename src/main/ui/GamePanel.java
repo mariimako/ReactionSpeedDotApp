@@ -40,7 +40,7 @@ public class GamePanel extends JPanel {
 
 
     // MODIFIES: g
-    // EFFECTS:  draws "game over" and pops up replay option
+    // EFFECTS:  draws "game over" and pops up replay or quit option
     private void gameOver(Graphics g) {
         List<String> optionList = new ArrayList<>();
         optionList.add("Restart");

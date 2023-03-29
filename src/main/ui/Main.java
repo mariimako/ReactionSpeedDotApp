@@ -16,12 +16,10 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-
-
 import model.SGame;
 import persistence.JsonReader;
 import persistence.JsonWriter;
-import ui.drawer.GameDraw;
+
 
 // class to run the game
 public class Main extends JFrame {
@@ -109,6 +107,7 @@ public class Main extends JFrame {
 
     /*
     EFFECTS: opens up the pause menu, which can load or save the game
+    MODIFIES: this
      */
     private void pauseMenu() {
         timer.stop();
@@ -125,6 +124,9 @@ public class Main extends JFrame {
         }
     }
 
+    /*
+    EFFECTS: opens the options available to the user, such as speeding up, loading or saving and returns input
+     */
     private String options() {
         List<String> optionList = new ArrayList<>();
         optionList.add("Save");
@@ -199,6 +201,10 @@ public class Main extends JFrame {
         }
     }
 
+    /*
+    EFFECTS: resets game and creates a new one with the loaded game to be the gamstate
+    MODIFIES: this
+     */
     public void reset(SGame game) {
         remove(gp);
         this.game = game;

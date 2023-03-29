@@ -31,7 +31,7 @@ class SGameTest {
 
 
     @Test
-    void testCheckGameOver() {
+    void testCheckGameOver() { // check when gameover for the player
         testGame.checkGameOver();
         assertTrue(testGame.isPlaying()); // be playing
         testGame.getPlayer().health = 0; // player health is 0, should be game over
@@ -42,7 +42,7 @@ class SGameTest {
     }
 
     @Test
-    void testSpawnEnemy () {
+    void testSpawnEnemy () { // test random spawn, should spwan within game size frame
         testGame.spawnEnemy();
         assertTrue(testGame.getEnemies().size() == 1);
         assertTrue(testGame.getEnemies().get(0).getPosX() <= SGame.WIDTH);
@@ -61,7 +61,7 @@ class SGameTest {
     }
 
     @Test
-    void toJsonTest () {
+    void toJsonTest () { // test Json conversion and reading
         JsonReader reader = new JsonReader("./data/testWriterGeneralGameState.json");
         JsonWriter writer = new JsonWriter("./data/testWriterGeneralGameState.json");
         try {
@@ -143,7 +143,7 @@ class SGameTest {
     }
 
     @Test
-    void update() {
+    void update() { // test the whole update method, callen every frame
         testGame.fireBullet();
         testGame.getEnemies().add(new Enemy(100, 200));
         testGame.getEnemies().add(new Enemy(200, 300));
@@ -153,8 +153,8 @@ class SGameTest {
 
 
         testGame.update();
-        assertEquals(253, testGame.getPlayer().getPosX());
-        assertEquals(250, testGame.getPlayer().getPosY());
+        assertEquals(SGame.WIDTH / 2 + testGame.getPlayer().getSpeed() - 1, testGame.getPlayer().getPosX());
+        assertEquals(SGame.HEIGHT / 2, testGame.getPlayer().getPosY());
 
         assertTrue(testGame.getEnemies().get(0).getPosX() != initX); //check it has moved
         assertTrue(testGame.getEnemies().get(1).getPosX() != initY); //check it has moved
@@ -170,7 +170,7 @@ class SGameTest {
     }
 
     @Test
-    void testUpdateSpeedUp() {
+    void testUpdateSpeedUp() { // test speeding up mechanic
         int initPlayerSpeed = testGame.getPlayer().getSpeed();
         int initEnemySpeed = testEnemy.getSpeed();
         int initBulletSpeed = testBullet.getSpeed();
@@ -186,13 +186,13 @@ class SGameTest {
         testGame.update();
         // should have sped up by 1
 
-        assertEquals(initPlayerSpeed+1, testGame.getBeings().get(0).getSpeed());
+        assertEquals(initPlayerSpeed + 1, testGame.getBeings().get(0).getSpeed());
         assertEquals(initEnemySpeed + 1, testGame.getBeings().get(1).getSpeed());
-        assertEquals(initBulletSpeed+1, testGame.getBeings().get(2).getSpeed());
+        assertEquals(initBulletSpeed + 1, testGame.getBeings().get(2).getSpeed());
     }
 
     @Test
-    void testFalseUpdates() {
+    void testFalseUpdates() { // test false cases
         testGame.stopPlaying();
         testGame.update();
         assertEquals(1,testGame.getBeings().size());
@@ -200,13 +200,11 @@ class SGameTest {
     }
 
     @Test
-    void testFalseUpdateCase() {
+    void testFalseUpdateCase() { // test when counter does not cause any changes
         testGame.counter = 20;
         testGame.update();
         assertEquals(1,testGame.getBeings().size());
         assertEquals(21,testGame.counter);
-
-
 
     }
 

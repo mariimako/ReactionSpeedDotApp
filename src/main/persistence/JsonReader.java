@@ -68,6 +68,10 @@ public class JsonReader {
         addToGame(gs,beingType,direction, verticalMovement,posX,posY,speed);
     }
 
+    /*
+    MODIFIES: gs
+    EFFECTS: adds an given element back to a game that was saved in the file
+     */
     private void addToGame(SGame gs, String beingType, int direction, Boolean verticalMovement,
                            int posX, int posY, int speed) {
         if (beingType == "enemies") {

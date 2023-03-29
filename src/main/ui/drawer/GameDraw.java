@@ -11,12 +11,11 @@ public class GameDraw {
     public static final int PLAYER_SIZE_X = 30;
     public static final int PLAYER_SIZE_Y = 30;
 
-    public static final int BULLET_SIZE_X = 5;
-    public static final int BULLET_SIZE_Y = 8;
+    public static final int BULLET_SIZE_X = 10;
+    public static final int BULLET_SIZE_Y = 10;
 
     public static final int ENEMY_SIZE_X = 30;
-    public static final int ENEMY_SIZE_Y = 50;
-
+    public static final int ENEMY_SIZE_Y = 30;
 
     public GameDraw(SGame game) {
         this.playingGame = game;
@@ -41,12 +40,21 @@ public class GameDraw {
         g.drawString(str, SGame.WIDTH - fm.stringWidth(str), SGame.HEIGHT);
         str = "Current Health: " + playingGame.getPlayer().getHealth();
         g.drawString(str,  0, SGame.HEIGHT);
+        str = "Bullets Being Fired: " + playingGame.getBullets().size();
+        g.drawString(str,  SGame.WIDTH - fm.stringWidth(str), 20);
+        g.setFont(new Font("Arial", Font.BOLD, 15));
+        str = "ESC to Pause, Arrow Keys for Control";
+        g.drawString(str,  0, 15);
         g.setColor(saved);
 
         drawBeing(g, playingGame.getPlayer());
     }
 
 
+    /*
+    EFFECTS: draw a singular given element in the game, depending on the object draw different shapes
+    MODIFIES: g
+     */
     public void drawBeing(Graphics g, Being e) {
         Color savedCol = g.getColor();
         if (e instanceof Enemy) {
@@ -59,7 +67,6 @@ public class GameDraw {
             g.fill3DRect((int) e.getPosX() - PLAYER_SIZE_X / 2, (int) e.getPosY() - PLAYER_SIZE_Y / 2,
                     PLAYER_SIZE_X, PLAYER_SIZE_Y, false);
         }
-
         g.setColor(e.getColor());
         g.setColor(savedCol);
     }

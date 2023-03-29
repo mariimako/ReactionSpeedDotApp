@@ -19,8 +19,6 @@ class BeingTest {
     private Being difPosBeing5;
     private Being difPosBeing6;
 
-
-    private GameDraw gd;
     @BeforeEach
     void runBefore() {
         testPlayer= new Player();

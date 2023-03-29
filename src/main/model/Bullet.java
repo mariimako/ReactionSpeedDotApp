@@ -17,7 +17,7 @@ public class Bullet extends Being {
         this.verticalMovement = player.getVerticalMovement();
         this.posX = player.getPosX();
         this.posY = player.getPosY();
-        this.setSpeed(5);
+        this.setSpeed(player.getSpeed() + this.getSpeed());
     }
 
     /*
@@ -27,6 +27,10 @@ public class Bullet extends Being {
         super(posX, posY);
     }
 
+    /*
+    EFFECTS: moves bullet in its specified direction with its own speed
+    MODIFIES: this
+     */
     @Override
     public void move() {
         super.move();

@@ -52,7 +52,7 @@ public class SGame implements Writable {
         playing = true;
     }
 
-        /*
+    /*
     MODIFIES: this
     EFFECTS: updates gamestate to move all objects and sometimes spawn enemies, speed up beings
     and increase spawn rate
@@ -78,6 +78,9 @@ public class SGame implements Writable {
         }
     }
 
+    /*
+    EFFECTS: speeds up game and bullets, has minimal effect on enemies
+     */
     public void speedUp() {
         for (Being b : beings) {
             int newSpeed = b.getSpeed() + 1;
@@ -211,9 +214,7 @@ public class SGame implements Writable {
     /*
     MODIFIES: this
     EFFECTS: calls all methods related to object collisions
-    NOT USED, FOR FUTURE IMPLEMENTATION
     */
-
     private void checkCollisions() {
         checkBullets();
         checkPlayer();

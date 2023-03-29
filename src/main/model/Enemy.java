@@ -16,7 +16,7 @@ public class Enemy extends Being {
     }
 
     /*
-    EFFECTS: move towards the player position, with speed varying by distance
+    EFFECTS: move towards the player position, with speed varying by distance, using euclidean distance and damping
     MODIFIES: this
      */
     public void enemyUpdate(Player player) {

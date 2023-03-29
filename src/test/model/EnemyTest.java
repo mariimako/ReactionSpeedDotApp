@@ -43,7 +43,7 @@ class EnemyTest {
     }
 
     @Test
-    void EnemyCloseUpdateTest() {
+    void EnemyCloseUpdateTest() { // check enemy getting closer to player or not
         testEnemy = new Enemy( 230, 230);
         double intPosX = testEnemy.getPosX();
         double intPosY = testEnemy.getPosY();
