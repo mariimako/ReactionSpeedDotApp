@@ -1,16 +1,16 @@
 {
     "enemies": [{
-        "positionY": 322.8612736241257,
+        "positionY": 269.55091540251243,
         "verticalMovement": false,
-        "speed": 4,
-        "positionX": 241.03089923516046,
+        "speed": 3,
+        "positionX": 314.3393714218925,
         "direction": 1
     }],
     "player": [{
-        "positionY": 245,
-        "verticalMovement": false,
-        "speed": 17,
-        "positionX": 0,
+        "positionY": 85,
+        "verticalMovement": true,
+        "speed": 11,
+        "positionX": 181,
         "direction": -1
     }],
     "bullets": []
