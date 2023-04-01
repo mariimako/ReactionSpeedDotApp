@@ -70,6 +70,7 @@ public class SGame implements Writable {
             if (counter % SPAWN_RATE == apperancerate) {
                 spawnEnemy();
                 apperancerate -= 1;
+                EventLog.getInstance().logEvent(new Event("Spawned Enemy"));
             }
             if (counter % SPEED_UP_RATE == 0) {
                 speedUp();
@@ -85,6 +86,7 @@ public class SGame implements Writable {
         for (Being b : beings) {
             int newSpeed = b.getSpeed() + 1;
             b.setSpeed(newSpeed);
+            EventLog.getInstance().logEvent(new Event("Speed Up Beings."));
         }
     }
 
@@ -101,6 +103,7 @@ public class SGame implements Writable {
         Enemy e = new Enemy(randomX, randomY);
         enemies.add(e);
         beings.add(e);
+
     }
 
 
@@ -117,6 +120,8 @@ public class SGame implements Writable {
                 bullets.remove(b); // remove if at boundary
                 beings.remove(b); // remove if at boundary
                 b.setColor(Color.GRAY);
+                EventLog.getInstance().logEvent(new Event("Bullet Removed from Boundary"));
+
                 break; // once boundary is removed, exit loop, only one bullet should be removed per call
             }
             for (Enemy e: enemies) {
@@ -127,6 +132,8 @@ public class SGame implements Writable {
                     beings.remove(e);
                     e.setColor(Color.GRAY);
                     b.setColor(Color.GRAY);
+                    EventLog.getInstance().logEvent(new Event("Enemy Removed by Bullet"));
+
                     break outer; //once collided enemy found, exit loop, as only one should be removed
                 }
             }
@@ -142,6 +149,8 @@ public class SGame implements Writable {
         Bullet b = new Bullet(player);
         bullets.add(b);
         beings.add(b);
+        EventLog.getInstance().logEvent(new Event("New Bullet Fired"));
+
     }
 
 
@@ -182,6 +191,8 @@ public class SGame implements Writable {
     protected void checkGameOver() {
         if (player.health <= 0) {
             playing = false;
+            EventLog.getInstance().logEvent(new Event("Game Over"));
+
         }
     }
 
@@ -192,6 +203,8 @@ public class SGame implements Writable {
     public void moveBullets() {
         for (Bullet b : bullets) {
             b.move();
+            EventLog.getInstance().logEvent(new Event("Moved Bullets"));
+
         }
     }
 
@@ -206,6 +219,8 @@ public class SGame implements Writable {
                 player.decreaseHealth(COLLISION_DAMAGE);
                 enemies.remove(e);
                 beings.remove(e);
+                EventLog.getInstance().logEvent(new Event("Player Collided with Enemy"));
+
                 break;
             }
         }
