@@ -44,3 +44,66 @@ Inspiration for saving and loading using Json
 - or the game saved and continue playing the current version
 - When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit
 
+## Phase 4: Task 2
+Tue Apr 04 14:37:07 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:09 PDT 2023
+Spawned Enemy
+Tue Apr 04 14:37:10 PDT 2023
+Player Collided with Enemy
+Tue Apr 04 14:37:12 PDT 2023
+Spawned Enemy
+Tue Apr 04 14:37:12 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:12 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:12 PDT 2023
+Player Collided with Enemy
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:16 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:18 PDT 2023
+Spawned Enemy
+Tue Apr 04 14:37:19 PDT 2023
+Player Collided with Enemy
+Tue Apr 04 14:37:19 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:21 PDT 2023
+Spawned Enemy
+Tue Apr 04 14:37:23 PDT 2023
+Player Collided with Enemy
+Tue Apr 04 14:37:24 PDT 2023
+Speed Up Beings.
+Tue Apr 04 14:37:25 PDT 2023
+Spawned Enemy
+Tue Apr 04 14:37:25 PDT 2023
+Player Collided with Enemy
+Tue Apr 04 14:37:25 PDT 2023
+Game Over
