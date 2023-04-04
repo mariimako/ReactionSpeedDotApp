@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.SGame;
 import ui.drawer.GameDraw;
 
@@ -8,7 +10,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+// GamePanel is the Jpanel of the main game, drawing the player, enemies and bullets
 public class GamePanel extends JPanel {
 
     private SGame game;
@@ -34,7 +36,6 @@ public class GamePanel extends JPanel {
         } else {
             gameOver(g);
         }
-
     }
 
 
@@ -45,11 +46,8 @@ public class GamePanel extends JPanel {
         List<String> optionList = new ArrayList<>();
         optionList.add("Restart");
         optionList.add("Quit");
-
         Object[] options = optionList.toArray();
-
-        int value = JOptionPane.showOptionDialog(
-                null,
+        int value = JOptionPane.showOptionDialog(null,
                 "Game Over! Restart or Quit the Game",
                 "Options",
                 JOptionPane.YES_NO_OPTION,
@@ -57,7 +55,6 @@ public class GamePanel extends JPanel {
                 null,
                 options,
                 optionList.get(0));
-
         String opt = optionList.get(value);
         if (opt.charAt(0) == ('R')) {
             SGame newGame = new SGame(); // start new game

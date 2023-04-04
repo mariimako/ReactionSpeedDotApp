@@ -15,6 +15,8 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import model.Event;
+import model.EventLog;
 import model.SGame;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -217,7 +219,17 @@ public class Main extends JFrame {
 
     // Play the game
     public static void main(String[] args) {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            EventLog myObj = EventLog.getInstance();
+            for (Event e: myObj) {
+                System.out.println(e.toString());
+            }
+        }));
         SGame game = new SGame();
         new Main(game);
+
+
+
+
     }
 }

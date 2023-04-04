@@ -9,6 +9,7 @@ import javax.swing.Box;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// StatePanel is a new panel at the top to represent the health, enemies, and bullets fired
 public class StatePanel extends JPanel {
     private static final String ENEMIES_PRESENT = "Enemies: ";
     private static final String BEING_FIRED = "Missiles ";
