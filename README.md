@@ -107,3 +107,18 @@ Tue Apr 04 14:37:25 PDT 2023
 Player Collided with Enemy
 Tue Apr 04 14:37:25 PDT 2023
 Game Over
+
+## Phase 4: Task 3
+
+Some considerations for refractoring include decreasing coupling in the model class. Right now,
+the bulk of the mechanics of the game is included in the SGame and Being class. Player, Bullet and Enemy
+are almost mere placeholders, with little to no difference between them. I feel this is not good, because
+one error in Being causes an error for all subtypes Player, Bullet and Enemy. This can be
+avoided by using the observer pattern. The observer pattern can be used as there is the subject (the gamestae, 
+or SGame class) that is always being changed by the player and ui. The observers will be all the subtypes. 
+They want to know if they are supposed to move to an different location, fired an bullet etc.
+We can have Being as the observer and SGame as the subject. This will greatly reduce coupling.
+
+Another thing I would clearly work on is making SGame a singleton pattern. Because there is always one
+gamestate, SGame to record all the events of the game, this can be made into a singleton pattern
+for the purpose of improving design. 
