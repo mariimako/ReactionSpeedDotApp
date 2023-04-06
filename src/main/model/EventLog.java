@@ -4,30 +4,26 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-/**
- * Represents a log of alarm system events.
+/*
+ * Represents a log of game events.
  * We use the Singleton Design Pattern to ensure that there is only
  * one EventLog in the system and that the system has global access
  * to the single instance of the EventLog.
+ * Taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
  */
 public class EventLog implements Iterable<Event> {
-    /** the only EventLog in the system (Singleton Design Pattern) */
+    /* the only EventLog in the system (Singleton Design Pattern) */
     private static EventLog theLog;
     private Collection<Event> events;
 
-    /**
-     * Prevent external construction.
-     * (Singleton Design Pattern).
+    /* EFFECTS: constructs an log of events to record all events
      */
     private EventLog() {
         events = new ArrayList<Event>();
     }
 
-    /**
-     * Gets instance of EventLog - creates it
-     * if it doesn't already exist.
-     * (Singleton Design Pattern)
-     * @return  instance of EventLog
+    /* EFFECTS: get the eventlog representing all events, if there is none, create a new one
+       MODIFIES: this
      */
     public static EventLog getInstance() {
         if (theLog == null) {
@@ -37,22 +33,24 @@ public class EventLog implements Iterable<Event> {
         return theLog;
     }
 
-    /**
-     * Adds an event to the event log.
-     * @param e the event to be added
+    /* EFFECTS: add a new event to the many events to be recorded
+       MODIFIES: this
      */
     public void logEvent(Event e) {
         events.add(e);
     }
 
-    /**
-     * Clears the event log and logs the event.
+    /* EFFECTS: clears all the events that have been recorded so far
+       MODIFIES: this
      */
     public void clear() {
         events.clear();
         logEvent(new Event("Event log cleared."));
     }
 
+    /*
+      EFFECTS: return the event's iterator, so that it can be looped through
+     */
     @Override
     public Iterator<Event> iterator() {
         return events.iterator();

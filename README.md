@@ -22,6 +22,8 @@ Sources:
 JsonSerializationDemo, taken from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
 Inspiration for saving and loading using Json
 
+Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
+
 ## User Stories
 - As a user, I want to be able to move in four directions in the game, and see my current position as a player
 - As a user, I want to have enemies spawn randomly to a list of enemies where I can see how many there are
@@ -44,7 +46,7 @@ Inspiration for saving and loading using Json
 - or the game saved and continue playing the current version
 - When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit
 
-## Phase 4: Task 2
+## Phase 4: Task 2, Example Event Log
 Tue Apr 04 14:37:07 PDT 2023
 Speed Up Beings.
 Tue Apr 04 14:37:09 PDT 2023
