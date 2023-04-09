@@ -83,10 +83,10 @@ public class SGame implements Writable {
     EFFECTS: speeds up game and bullets, has minimal effect on enemies
      */
     public void speedUp() {
+        EventLog.getInstance().logEvent(new Event("Sped Up Beings"));
         for (Being b : beings) {
             int newSpeed = b.getSpeed() + 1;
             b.setSpeed(newSpeed);
-            EventLog.getInstance().logEvent(new Event("Speed Up Beings."));
         }
     }
 
@@ -203,8 +203,6 @@ public class SGame implements Writable {
     public void moveBullets() {
         for (Bullet b : bullets) {
             b.move();
-            EventLog.getInstance().logEvent(new Event("Moved Bullets"));
-
         }
     }
 
@@ -266,6 +264,12 @@ public class SGame implements Writable {
 
     public void stopPlaying() {
         this.playing = false;
+        EventLog.getInstance().logEvent(new Event("Stopped Game"));
+    }
+
+    public void startPlaying() {
+        this.playing = true;
+        EventLog.getInstance().logEvent(new Event("Started Game"));
     }
 
 }

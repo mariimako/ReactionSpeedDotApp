@@ -116,6 +116,7 @@ public class Main extends JFrame {
      */
     private void pauseMenu() {
         timer.stop();
+        game.stopPlaying();
         String opt = options();
         if (opt.equals("Load")) {
             load();
@@ -127,6 +128,7 @@ public class Main extends JFrame {
             JOptionPane.showMessageDialog(Main.this, "Returning to Game");
             timer.start();
         }
+        game.startPlaying();
     }
 
     /*
@@ -164,7 +166,6 @@ public class Main extends JFrame {
         while (game.getPlayer().getSpeed() < speedUp) {
             game.speedUp();
         }
-
         timer.start();
     }
 
@@ -226,10 +227,7 @@ public class Main extends JFrame {
             }
         }));
         SGame game = new SGame();
+        game.startPlaying();
         new Main(game);
-
-
-
-
     }
 }

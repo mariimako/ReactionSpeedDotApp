@@ -47,68 +47,89 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
 - When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit
 
 ## Phase 4: Task 2, Example Event Log
-Tue Apr 04 14:37:07 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:09 PDT 2023
+Sun Apr 09 16:54:51 PDT 2023
+Started Game
+Sun Apr 09 16:54:53 PDT 2023
+Sped Up Beings
+Sun Apr 09 16:54:54 PDT 2023
 Spawned Enemy
-Tue Apr 04 14:37:10 PDT 2023
-Player Collided with Enemy
-Tue Apr 04 14:37:12 PDT 2023
+Sun Apr 09 16:54:56 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:54:56 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:54:56 PDT 2023
+Enemy Removed by Bullet
+Sun Apr 09 16:54:56 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:54:57 PDT 2023
+Bullet Removed from Boundary
+Sun Apr 09 16:54:57 PDT 2023
+Bullet Removed from Boundary
+Sun Apr 09 16:54:57 PDT 2023
 Spawned Enemy
-Tue Apr 04 14:37:12 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:12 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:12 PDT 2023
+Sun Apr 09 16:54:57 PDT 2023
+Sped Up Beings
+Sun Apr 09 16:54:58 PDT 2023
 Player Collided with Enemy
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:16 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:18 PDT 2023
+Sun Apr 09 16:55:01 PDT 2023
 Spawned Enemy
-Tue Apr 04 14:37:19 PDT 2023
-Player Collided with Enemy
-Tue Apr 04 14:37:19 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:21 PDT 2023
+Sun Apr 09 16:55:02 PDT 2023
+Sped Up Beings
+Sun Apr 09 16:55:02 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:55:02 PDT 2023
+Enemy Removed by Bullet
+Sun Apr 09 16:55:04 PDT 2023
 Spawned Enemy
-Tue Apr 04 14:37:23 PDT 2023
-Player Collided with Enemy
-Tue Apr 04 14:37:24 PDT 2023
-Speed Up Beings.
-Tue Apr 04 14:37:25 PDT 2023
+Sun Apr 09 16:55:05 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:55:05 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:55:06 PDT 2023
+Bullet Removed from Boundary
+Sun Apr 09 16:55:06 PDT 2023
+Bullet Removed from Boundary
+Sun Apr 09 16:55:06 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:55:06 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:55:06 PDT 2023
+Enemy Removed by Bullet
+Sun Apr 09 16:55:07 PDT 2023
+Bullet Removed from Boundary
+Sun Apr 09 16:55:07 PDT 2023
+Sped Up Beings
+Sun Apr 09 16:55:08 PDT 2023
 Spawned Enemy
-Tue Apr 04 14:37:25 PDT 2023
+Sun Apr 09 16:55:09 PDT 2023
+New Bullet Fired
+Sun Apr 09 16:55:09 PDT 2023
+Enemy Removed by Bullet
+Sun Apr 09 16:55:11 PDT 2023
+Spawned Enemy
+Sun Apr 09 16:55:11 PDT 2023
+Sped Up Beings
+Sun Apr 09 16:55:14 PDT 2023
 Player Collided with Enemy
-Tue Apr 04 14:37:25 PDT 2023
+Sun Apr 09 16:55:15 PDT 2023
+Spawned Enemy
+Sun Apr 09 16:55:16 PDT 2023
+Sped Up Beings
+Sun Apr 09 16:55:16 PDT 2023
+Player Collided with Enemy
+Sun Apr 09 16:55:18 PDT 2023
+Spawned Enemy
+Sun Apr 09 16:55:20 PDT 2023
+Sped Up Beings
+Sun Apr 09 16:55:21 PDT 2023
+Player Collided with Enemy
+Sun Apr 09 16:55:21 PDT 2023
+Spawned Enemy
+Sun Apr 09 16:55:22 PDT 2023
+Player Collided with Enemy
+Sun Apr 09 16:55:22 PDT 2023
 Game Over
+
 
 ## Phase 4: Task 3
 
