@@ -47,88 +47,104 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
 - When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit
 
 ## Phase 4: Task 2, Example Event Log
-Sun Apr 09 16:54:51 PDT 2023
-Started Game
-Sun Apr 09 16:54:53 PDT 2023
-Sped Up Beings
-Sun Apr 09 16:54:54 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:54:56 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:54:56 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:54:56 PDT 2023
-Enemy Removed by Bullet
-Sun Apr 09 16:54:56 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:54:57 PDT 2023
-Bullet Removed from Boundary
-Sun Apr 09 16:54:57 PDT 2023
-Bullet Removed from Boundary
-Sun Apr 09 16:54:57 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:54:57 PDT 2023
-Sped Up Beings
-Sun Apr 09 16:54:58 PDT 2023
-Player Collided with Enemy
-Sun Apr 09 16:55:01 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:55:02 PDT 2023
-Sped Up Beings
-Sun Apr 09 16:55:02 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:55:02 PDT 2023
-Enemy Removed by Bullet
-Sun Apr 09 16:55:04 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:55:05 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:55:05 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:55:06 PDT 2023
-Bullet Removed from Boundary
-Sun Apr 09 16:55:06 PDT 2023
-Bullet Removed from Boundary
-Sun Apr 09 16:55:06 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:55:06 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:55:06 PDT 2023
-Enemy Removed by Bullet
-Sun Apr 09 16:55:07 PDT 2023
-Bullet Removed from Boundary
-Sun Apr 09 16:55:07 PDT 2023
-Sped Up Beings
-Sun Apr 09 16:55:08 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:55:09 PDT 2023
-New Bullet Fired
-Sun Apr 09 16:55:09 PDT 2023
-Enemy Removed by Bullet
-Sun Apr 09 16:55:11 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:55:11 PDT 2023
-Sped Up Beings
-Sun Apr 09 16:55:14 PDT 2023
-Player Collided with Enemy
-Sun Apr 09 16:55:15 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:55:16 PDT 2023
-Sped Up Beings
-Sun Apr 09 16:55:16 PDT 2023
-Player Collided with Enemy
-Sun Apr 09 16:55:18 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:55:20 PDT 2023
-Sped Up Beings
-Sun Apr 09 16:55:21 PDT 2023
-Player Collided with Enemy
-Sun Apr 09 16:55:21 PDT 2023
-Spawned Enemy
-Sun Apr 09 16:55:22 PDT 2023
-Player Collided with Enemy
-Sun Apr 09 16:55:22 PDT 2023
-Game Over
+- Sun Apr 09 16:54:51 PDT 2023
+- Started Game
+- Sun Apr 09 16:54:53 PDT 2023
+- Sped Up Beings
+- Sun Apr 09 16:54:54 PDT 2023
+- Spawned Enemy
+- Sun Apr 09 16:54:56 PDT 2023
+- New Bullet Fired
+- Sun Apr 09 16:54:56 PDT 2023
+- New Bullet Fired
+- Sun Apr 09 16:54:56 PDT 2023
+- Enemy Removed by Bullet
+- Sun Apr 09 16:54:56 PDT 2023
+- New Bullet Fired
+- Sun Apr 09 16:54:57 PDT 2023
+- Bullet Removed from Boundary
+- Sun Apr 09 16:54:57 PDT 2023
+- Bullet Removed from Boundary
+- Sun Apr 09 16:54:57 PDT 2023
+- Spawned Enemy
+- Sun Apr 09 16:54:57 PDT 2023
+- Sped Up Beings
+- Sun Apr 09 16:54:58 PDT 2023
+- Player Collided with Enemy
+- Sun Apr 09 16:55:01 PDT 2023
+- Spawned Enemy
+- Sun Apr 09 16:55:02 PDT 2023
+- Sped Up Beings
+- Sun Apr 09 16:55:02 PDT 2023
+- New Bullet Fired
+- Sun Apr 09 16:55:02 PDT 2023
+- Enemy Removed by Bullet
+- Sun Apr 09 16:55:04 PDT 2023
+- Spawned Enemy
+- Sun Apr 09 16:55:05 PDT 2023
+- New Bullet Fired
+- Sun Apr 09 16:55:05 PDT 2023
+- New Bullet Fired
+- Sun Apr 09 16:55:06 PDT 2023 
+- Bullet Removed from Boundary 
+- Sun Apr 09 16:55:06 PDT 2023 
+- Bullet Removed from Boundary 
+- Sun Apr 09 16:55:06 PDT 2023 
+- New Bullet Fired 
+- Sun Apr 09 16:55:06 PDT 2023 
+- New Bullet Fired 
+- Sun Apr 09 16:55:06 PDT 2023 
+- Enemy Removed by Bullet
+- 
+   Sun Apr 09 16:55:07 PDT 2023
+- 
+   Bullet Removed from Boundary
+- 
+   Sun Apr 09 16:55:07 PDT 2023
+- 
+   Sped Up Beings
+- 
+   Sun Apr 09 16:55:08 PDT 2023
+- 
+   Spawned Enemy
+- 
+   Sun Apr 09 16:55:09 PDT 2023
+- 
+   New Bullet Fired
+- 
+   Sun Apr 09 16:55:09 PDT 2023
+- 
+   Enemy Removed by Bullet
+- 
+   Sun Apr 09 16:55:11 PDT 2023
+- 
+   Spawned Enemy
+- 
+   Sun Apr 09 16:55:11 PDT 2023
+- 
+   Sped Up Beings
+- 
+   Sun Apr 09 16:55:14 PDT 2023
+   Player Collided with Enemy
+   Sun Apr 09 16:55:15 PDT 2023
+   Spawned Enemy
+   Sun Apr 09 16:55:16 PDT 2023
+   Sped Up Beings
+   Sun Apr 09 16:55:16 PDT 2023
+   Player Collided with Enemy
+   Sun Apr 09 16:55:18 PDT 2023
+   Spawned Enemy
+   Sun Apr 09 16:55:20 PDT 2023
+   Sped Up Beings
+   Sun Apr 09 16:55:21 PDT 2023
+   Player Collided with Enemy
+   Sun Apr 09 16:55:21 PDT 2023
+   Spawned Enemy
+   Sun Apr 09 16:55:22 PDT 2023
+   Player Collided with Enemy
+   Sun Apr 09 16:55:22 PDT 2023
+   Game Over
+
 
 
 ## Phase 4: Task 3
@@ -140,7 +156,9 @@ one error in Being causes an error for all subtypes Player, Bullet and Enemy. Th
 avoided by using the observer pattern. The observer pattern can be used as there is the subject (the gamestae, 
 or SGame class) that is always being changed by the player and ui. The observers will be all the subtypes. 
 They want to know if they are supposed to move to an different location, fired an bullet etc.
-We can have Being as the observer and SGame as the subject. This will greatly reduce coupling.
+We can have Being as the observer and SGame as the subject. This will greatly reduce coupling.SGame is responsible 
+for too many actions of the whole program, and could be split into different classes to adhere to single responsibility 
+principle.
 
 Another thing I would clearly work on is making SGame a singleton pattern. Because there is always one
 gamestate, SGame to record all the events of the game, this can be made into a singleton pattern
