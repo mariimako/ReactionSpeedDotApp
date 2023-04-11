@@ -39,12 +39,14 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
 - Play the game by using the arrow keys.
 - Shoot bullets to randomly spawned enemies by pressing the space bar.
 - Enemies will spawn randomly in intervals.
-- Note that you should gradually speed up.
+- Note that you should also gradually speed up.
 - Press escape to pause the game and open an menu.
-- As prompted, save or load the game, or speed up the game.
-- After exiting the popup window, you should have the most recent saved state loaded, 
+- As prompted, save or load the game, or speed up the game by specifying a speed that is greater than current speed.
+- Do not press escape again, as I saw that this causes problems sometimes
+- After pressing load, you should have the most recent saved state loaded, 
 - or the game saved and continue playing the current version
-- When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit
+- When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit.
+- When exiting, you should see the event log appear
 
 ## Phase 4: Task 2, Example Event Log
 - Sun Apr 09 16:54:51 PDT 2023
@@ -153,14 +155,15 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
 
 ## Phase 4: Task 3
 
-Some considerations for refractoring include decreasing coupling in the model class. Right now,
-the bulk of the mechanics of the game is included in the SGame and Being class. Player, Bullet and Enemy
-are almost mere placeholders, with little to no difference between them. I feel this is not good, because
-one error in Being causes an error for all subtypes Player, Bullet and Enemy. This can be
-avoided by using the observer pattern. The observer pattern can be used as there is the subject (the gamestae, 
-or SGame class) that is always being changed by the player and ui. The observers will be all the subtypes. 
-They want to know if they are supposed to move to an different location, fired an bullet etc.
-We can have Being as the observer and SGame as the subject. This will greatly reduce coupling.SGame is responsible 
+One refracting I would make is for the SGame class. It feels that SGame is responsible 
 for too many actions of the whole program, and could be split into different classes to adhere to single responsibility 
 principle. This can be done by splitting the different methods that considers the bullets, the players and enemies to be
-different classes.
+different classes. For example, spawn enemy or update enemy, move bullets or fire bullet and check gameover are 
+different methods that deal with different classes, so they may be split into different classes. 
+
+Another final change I would make is implementing a singleton pattern for SGame. There is always only one instance of 
+SGame, and in the UI, I have to pass the SGame I am working with around different classes to get information from it by 
+having a parameter , which can be avoided if SGame is a singleton: there is only one instance that can be accessed from 
+multiple classes. However, one issue that would arise is the loading of the game. Currently I create a new instance of a 
+game and make this new game equal to the loaded game, which can not be done with a singleton. I would need a reset function 
+and change each part of the one SGame instance that exists if I were to implement a singleton pattern.
