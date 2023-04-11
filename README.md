@@ -125,25 +125,29 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
    Sped Up Beings
 - 
    Sun Apr 09 16:55:14 PDT 2023
+-  
    Player Collided with Enemy
+-  
    Sun Apr 09 16:55:15 PDT 2023
+- 
    Spawned Enemy
-   Sun Apr 09 16:55:16 PDT 2023
-   Sped Up Beings
-   Sun Apr 09 16:55:16 PDT 2023
-   Player Collided with Enemy
-   Sun Apr 09 16:55:18 PDT 2023
-   Spawned Enemy
-   Sun Apr 09 16:55:20 PDT 2023
-   Sped Up Beings
-   Sun Apr 09 16:55:21 PDT 2023
-   Player Collided with Enemy
-   Sun Apr 09 16:55:21 PDT 2023
-   Spawned Enemy
-   Sun Apr 09 16:55:22 PDT 2023
-   Player Collided with Enemy
-   Sun Apr 09 16:55:22 PDT 2023
-   Game Over
+- 
+- Sun Apr 09 16:55:16 PDT 2023 
+- Sped Up Beings 
+- Sun Apr 09 16:55:16 PDT 2023 
+- Player Collided with Enemy 
+- Sun Apr 09 16:55:18 PDT 2023 
+- Spawned Enemy 
+- Sun Apr 09 16:55:20 PDT 2023 
+- Sped Up Beings 
+- Sun Apr 09 16:55:21 PDT 2023 
+- Player Collided with Enemy 
+- Sun Apr 09 16:55:21 PDT 2023 
+- Spawned Enemy 
+- Sun Apr 09 16:55:22 PDT 2023 
+- Player Collided with Enemy 
+- Sun Apr 09 16:55:22 PDT 2023 
+- Game Over
 
 
 
@@ -158,8 +162,5 @@ or SGame class) that is always being changed by the player and ui. The observers
 They want to know if they are supposed to move to an different location, fired an bullet etc.
 We can have Being as the observer and SGame as the subject. This will greatly reduce coupling.SGame is responsible 
 for too many actions of the whole program, and could be split into different classes to adhere to single responsibility 
-principle.
-
-Another thing I would clearly work on is making SGame a singleton pattern. Because there is always one
-gamestate, SGame to record all the events of the game, this can be made into a singleton pattern
-for the purpose of improving design. 
+principle. This can be done by splitting the different methods that considers the bullets, the players and enemies to be
+different classes.
