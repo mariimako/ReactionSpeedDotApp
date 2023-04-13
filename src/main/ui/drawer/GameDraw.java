@@ -4,6 +4,7 @@ import model.*;
 
 import java.awt.*;
 
+// class to draw all game objects currently in the game state such as the player, enemy or bullets
 public class GameDraw {
 
     SGame playingGame;

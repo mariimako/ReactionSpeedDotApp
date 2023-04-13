@@ -1,7 +1,7 @@
 
 # Survival Dot
 
-## A simple but fun to play endless survival game!
+## A simple endless survival game!
 
 This project is a **2D survival game**. The player will be controlling a single character to move around and dodge
 projectiles, eliminate enemies, gain and upgrade weapons and try to reach a high score. As the game progresses, enemies
@@ -12,11 +12,10 @@ I have programmed several games before, but I want to create one that is simple 
 application.
 
 The following will be some characteristics of the game:
-- Player will have hitpoints that decrease to 0 when hit by projectiles or enemies, and it is game over when it is 0
+- Player will have hit points that decrease to 0 when hit by projectiles or enemies, and it is game over when it is 0
 - Player's score increases as time progresses and enemies are eliminated
 - Players can pick up random weapons around the map
-- Saving and loading the game should be possible, along with resetting and storing highscores
-- Enemies will vary, with different damage outputs, hitpoints and speed to reach player
+- Saving and loading the game should be possible
 
 Sources:
 JsonSerializationDemo, taken from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
@@ -24,12 +23,15 @@ Inspiration for saving and loading using Json
 
 Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 
+Inspiration for structure taken from SpaceInvadersRefactored, at 
+https://github.students.cs.ubc.ca/CPSC210/SpaceInvadersRefactored
+
 ## User Stories
 - As a user, I want to be able to move in four directions in the game, and see my current position as a player
 - As a user, I want to have enemies spawn randomly to a list of enemies where I can see how many there are
 - As a user, I want to be able to fire bullets from my current position (player position) many times,
-- As a user, I want to be able to move bullets in their respective directions 
-- As a user, I want to be able eliminate enemies and see that I did so
+- As a user, I want to be able to let bullets move in their respective directions 
+- As a user, I want to be able to eliminate enemies and see that I did so
 - As a user, I want to choose to save my game state of the most recent state. This saves all information of the game 
 - As a user, I want to choose to load my most recent saved gamestate to get the saved information of the game
 
@@ -42,11 +44,11 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
 - Note that you should also gradually speed up.
 - Press escape to pause the game and open an menu.
 - As prompted, save or load the game, or speed up the game by specifying a speed that is greater than current speed.
-- Do not press escape again, as I saw that this causes problems sometimes
+- Do not press escape again, as this causes problems sometimes
 - After pressing load, you should have the most recent saved state loaded, 
 - or the game saved and continue playing the current version
 - When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit.
-- When exiting, you should see the event log appear
+- When exiting, you should see the event log appear in the intellij console
 
 ## Phase 4: Task 2, Example Event Log
 - Sun Apr 09 16:54:51 PDT 2023
@@ -155,15 +157,24 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
 
 ## Phase 4: Task 3
 
-One refracting I would make is for the SGame class. It feels that SGame is responsible 
+One refactoring I would make is for the SGame class. It feels that SGame is responsible 
 for too many actions of the whole program, and could be split into different classes to adhere to single responsibility 
-principle. This can be done by splitting the different methods that considers the bullets, the players and enemies to be
-different classes. For example, spawn enemy or update enemy, move bullets or fire bullet and check gameover are 
-different methods that deal with different classes, so they may be split into different classes. 
+principle. This can be done by splitting the different methods that considers the bullets, the players, enemies and
+update functions to be different classes. For example, spawnEnemy or updateEnemy, moveBullets or fireBullet and 
+checkGameover are different methods that deal with different classes, so they may be split into different classes. There can 
+be four classes after this split: EnemyState, BulletState, PlayerState and GameState. Each will have the methods in SGame currently
+that correspond with the classes it deals with. GameState will have the main update functions that will be used in the UI. 
+Note that this is done without adding any new code, just simply splitting current code into different classes.
+This allows lower coupling, since we have less classes dependant on one single class working. It will also help identify
+errors and make the program easier to understand.
 
 Another final change I would make is implementing a singleton pattern for SGame. There is always only one instance of 
-SGame, and in the UI, I have to pass the SGame I am working with around different classes to get information from it by 
-having a parameter , which can be avoided if SGame is a singleton: there is only one instance that can be accessed from 
-multiple classes. However, one issue that would arise is the loading of the game. Currently I create a new instance of a 
-game and make this new game equal to the loaded game, which can not be done with a singleton. I would need a reset function 
-and change each part of the one SGame instance that exists if I were to implement a singleton pattern.
+SGame that represents the state of the game (eg. enemies that exist, player positions, firing a bullet), and currently 
+in the UI, I must pass the SGame as a parameter to different classes to get information from 
+it, which can be avoided if SGame is a singleton: there is only one instance that can be accessed from 
+multiple classes as a static class. However, one issue that would arise is the loading of the game. 
+Currently I create a new instance of a game and make this new game equal to the loaded game, which can not be done with 
+a singleton as the class will be static. I would need a reset function and change each part of the one SGame instance 
+that exists in the static class if I were to implement a singleton pattern. As you see in the UML diagram, all
+classes in the ui package is associated with SGame, and this coupling can be improved by having a singleton pattern for
+SGame.

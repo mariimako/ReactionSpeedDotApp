@@ -3,9 +3,6 @@ package model;
 
 
 // Represents a user controlled player, with positions and health, extending the Being class
-
-import java.awt.*;
-
 public class Player extends Being {
 
     protected int health; // remaining health of player

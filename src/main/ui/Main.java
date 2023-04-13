@@ -35,7 +35,7 @@ public class Main extends JFrame {
     JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
     JsonReader jsonReader = new JsonReader(JSON_STORE);
 
-    // EFFECTS: sets up window and adds key listners, panels
+    // EFFECTS: sets up window and adds key listeners, panels
     public Main(SGame game) {
         super("Survival Dot");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -218,7 +218,7 @@ public class Main extends JFrame {
         pack();
     }
 
-    // Play the game
+    // EFFECTS: Plays the game
     public static void main(String[] args) {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             EventLog myObj = EventLog.getInstance();

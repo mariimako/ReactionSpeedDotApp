@@ -1,13 +1,10 @@
 package model;
 
-import org.json.JSONObject;
-
 import java.awt.*;
 
 // represents a bullet shot by players that eliminate enemies when it hits them
 public class Bullet extends Being {
 
-    protected Color color = new Color(103, 37, 11);
 
     /*
     EFFECTS: instantiates bullet that is the same as the player for direction, position

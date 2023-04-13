@@ -23,9 +23,8 @@ public class StatePanel extends JPanel {
     private JLabel healthLbl;
     private JLabel speedLbl;
 
-    // Constructs a score panel
-    // effects: sets the background colour and draws the initial labels;
-    //          updates this with the game whose score is to be displayed
+
+    // EFFECTS:  updates this with the game score is to be displayed
     public StatePanel(SGame g) {
         game = g;
         setBackground(new Color(180, 180, 180));
@@ -46,9 +45,9 @@ public class StatePanel extends JPanel {
         add(healthLbl);
     }
 
-    // Updates the score panel
-    // modifies: this
-    // effects:  updates number of invaders shot and number of missiles
+
+    // MODIFIES: this
+    // EFFECTS:  updates number of invaders shot and number of missiles
     //           remaining to reflect current state of game
     public void update() {
         invadersLbl.setText(ENEMIES_PRESENT + game.getEnemies().size());

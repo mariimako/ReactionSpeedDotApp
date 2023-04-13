@@ -1,17 +1,11 @@
 {
     "enemies": [],
     "player": [{
-        "positionY": 206,
+        "positionY": 200,
         "verticalMovement": false,
-        "speed": 4,
-        "positionX": 293,
+        "speed": 20,
+        "positionX": 41,
         "direction": -1
     }],
-    "bullets": [{
-        "positionY": 90,
-        "verticalMovement": true,
-        "speed": 7,
-        "positionX": 325,
-        "direction": -1
-    }]
+    "bullets": []
 }

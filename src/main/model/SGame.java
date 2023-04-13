@@ -3,25 +3,19 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import persistence.Writable;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
 
 // represents game state. updates game to change player, bullet position and spawns enemies sometimes
-public class SGame implements Writable {
+public class SGame {
 
     protected ArrayList<Enemy> enemies; // a list of enemies present in the gamestate that has spawned
     protected ArrayList<Bullet> bullets; // a list of bullets that exists in the gamestate
     protected ArrayList<Being> beings;
 
     private Player player; // represents the player
-
-    protected static final int SIZE_X = 45;
-    protected static final int SIZE_Y = 24;
-    protected Color color = new Color(250, 128, 20);
 
     public static final int HEIGHT = 500; // height of gamestate
     public static final int WIDTH = 500; // width of gamestate
@@ -155,7 +149,6 @@ public class SGame implements Writable {
 
 
     // EFFECTS: convert whole gamestate object to json object, taken influence from JsonSerializationDemo
-    @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         JSONArray enemyArray = new JSONArray();
@@ -233,6 +226,24 @@ public class SGame implements Writable {
         checkPlayer();
     }
 
+    /*
+    EFFECTS: stops playing the game and logs it
+    MODIFIES: this
+     */
+    public void stopPlaying() {
+        this.playing = false;
+        EventLog.getInstance().logEvent(new Event("Stopped Game"));
+    }
+
+    /*
+     EFFECTS: starts playing the game and logs it
+     MODIFIES: this
+     */
+    public void startPlaying() {
+        this.playing = true;
+        EventLog.getInstance().logEvent(new Event("Started Game"));
+    }
+
     public void setCounter(int counter) {
         this.counter = counter;
     }
@@ -259,17 +270,6 @@ public class SGame implements Writable {
 
     public ArrayList<Being> getBeings() {
         return beings;
-    }
-
-
-    public void stopPlaying() {
-        this.playing = false;
-        EventLog.getInstance().logEvent(new Event("Stopped Game"));
-    }
-
-    public void startPlaying() {
-        this.playing = true;
-        EventLog.getInstance().logEvent(new Event("Started Game"));
     }
 
 }
