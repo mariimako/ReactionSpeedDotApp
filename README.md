@@ -1,10 +1,10 @@
 
-# Survival Dot
+# Reaction Speed Dot
 
-## A simple endless survival game!
+## A simple endless test to reaction speed game!
 
-This project is a **2D survival game**. The player will be controlling a single character to move around and dodge
-projectiles, eliminate enemies, gain and upgrade weapons and try to reach a high score. As the game progresses, enemies
+This project is a **2D reaction speed game**. The player will be controlling a single character to move around and dodge
+projectiles, eliminate enemies with a high speed block controlled with key input. As the game progresses, enemies
 will increase and different enemies will appear.
 
 This project is interest to me because I personally loved games that are endless and require beating a high score. 
