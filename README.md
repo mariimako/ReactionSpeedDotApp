@@ -1,5 +1,5 @@
 
-## A simple endless test to reaction speed game!
+A simple endless test to reaction speed game!
 
 This project is a **2D reaction speed game**. The player will be controlling a single character to move around and dodge
 projectiles, eliminate enemies with a high speed block controlled with key input. As the game progresses, enemies
@@ -24,17 +24,7 @@ Logging system taken from AlarmSystem https://github.students.cs.ubc.ca/CPSC210/
 Inspiration for structure taken from SpaceInvadersRefactored, at 
 https://github.students.cs.ubc.ca/CPSC210/SpaceInvadersRefactored
 
-## User Stories
-- As a user, I want to be able to move in four directions in the game, and see my current position as a player
-- As a user, I want to have enemies spawn randomly to a list of enemies where I can see how many there are
-- As a user, I want to be able to fire bullets from my current position (player position) many times,
-- As a user, I want to be able to let bullets move in their respective directions 
-- As a user, I want to be able to eliminate enemies and see that I did so
-- As a user, I want to choose to save my game state of the most recent state. This saves all information of the game 
-- As a user, I want to choose to load my most recent saved gamestate to get the saved information of the game
-
-
-## Instructions for Grader
+## Instructions
 - Run the Game.
 - Play the game by using the arrow keys.
 - Shoot bullets to randomly spawned enemies by pressing the space bar.
@@ -48,112 +38,8 @@ https://github.students.cs.ubc.ca/CPSC210/SpaceInvadersRefactored
 - When you hit an enemy, your health should decrease. When 0, it is game over. You may restart the game, or exit.
 - When exiting, you should see the event log appear in the intellij console
 
-## Phase 4: Task 2, Example Event Log
-- Sun Apr 09 16:54:51 PDT 2023
-- Started Game
-- Sun Apr 09 16:54:53 PDT 2023
-- Sped Up Beings
-- Sun Apr 09 16:54:54 PDT 2023
-- Spawned Enemy
-- Sun Apr 09 16:54:56 PDT 2023
-- New Bullet Fired
-- Sun Apr 09 16:54:56 PDT 2023
-- New Bullet Fired
-- Sun Apr 09 16:54:56 PDT 2023
-- Enemy Removed by Bullet
-- Sun Apr 09 16:54:56 PDT 2023
-- New Bullet Fired
-- Sun Apr 09 16:54:57 PDT 2023
-- Bullet Removed from Boundary
-- Sun Apr 09 16:54:57 PDT 2023
-- Bullet Removed from Boundary
-- Sun Apr 09 16:54:57 PDT 2023
-- Spawned Enemy
-- Sun Apr 09 16:54:57 PDT 2023
-- Sped Up Beings
-- Sun Apr 09 16:54:58 PDT 2023
-- Player Collided with Enemy
-- Sun Apr 09 16:55:01 PDT 2023
-- Spawned Enemy
-- Sun Apr 09 16:55:02 PDT 2023
-- Sped Up Beings
-- Sun Apr 09 16:55:02 PDT 2023
-- New Bullet Fired
-- Sun Apr 09 16:55:02 PDT 2023
-- Enemy Removed by Bullet
-- Sun Apr 09 16:55:04 PDT 2023
-- Spawned Enemy
-- Sun Apr 09 16:55:05 PDT 2023
-- New Bullet Fired
-- Sun Apr 09 16:55:05 PDT 2023
-- New Bullet Fired
-- Sun Apr 09 16:55:06 PDT 2023 
-- Bullet Removed from Boundary 
-- Sun Apr 09 16:55:06 PDT 2023 
-- Bullet Removed from Boundary 
-- Sun Apr 09 16:55:06 PDT 2023 
-- New Bullet Fired 
-- Sun Apr 09 16:55:06 PDT 2023 
-- New Bullet Fired 
-- Sun Apr 09 16:55:06 PDT 2023 
-- Enemy Removed by Bullet
-- 
-   Sun Apr 09 16:55:07 PDT 2023
-- 
-   Bullet Removed from Boundary
-- 
-   Sun Apr 09 16:55:07 PDT 2023
-- 
-   Sped Up Beings
-- 
-   Sun Apr 09 16:55:08 PDT 2023
-- 
-   Spawned Enemy
-- 
-   Sun Apr 09 16:55:09 PDT 2023
-- 
-   New Bullet Fired
-- 
-   Sun Apr 09 16:55:09 PDT 2023
-- 
-   Enemy Removed by Bullet
-- 
-   Sun Apr 09 16:55:11 PDT 2023
-- 
-   Spawned Enemy
-- 
-   Sun Apr 09 16:55:11 PDT 2023
-- 
-   Sped Up Beings
-- 
-   Sun Apr 09 16:55:14 PDT 2023
--  
-   Player Collided with Enemy
--  
-   Sun Apr 09 16:55:15 PDT 2023
-- 
-   Spawned Enemy
-- 
-- Sun Apr 09 16:55:16 PDT 2023 
-- Sped Up Beings 
-- Sun Apr 09 16:55:16 PDT 2023 
-- Player Collided with Enemy 
-- Sun Apr 09 16:55:18 PDT 2023 
-- Spawned Enemy 
-- Sun Apr 09 16:55:20 PDT 2023 
-- Sped Up Beings 
-- Sun Apr 09 16:55:21 PDT 2023 
-- Player Collided with Enemy 
-- Sun Apr 09 16:55:21 PDT 2023 
-- Spawned Enemy 
-- Sun Apr 09 16:55:22 PDT 2023 
-- Player Collided with Enemy 
-- Sun Apr 09 16:55:22 PDT 2023 
-- Game Over
 
-
-
-## Phase 4: Task 3
+## Refractoring Potential
 
 One refactoring I would make is for the SGame class. It feels that SGame is responsible 
 for too many actions of the whole program, and could be split into different classes to adhere to single responsibility 
