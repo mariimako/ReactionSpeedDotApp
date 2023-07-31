@@ -1,6 +1,4 @@
 
-# Reaction Speed Dot
-
 ## A simple endless test to reaction speed game!
 
 This project is a **2D reaction speed game**. The player will be controlling a single character to move around and dodge
