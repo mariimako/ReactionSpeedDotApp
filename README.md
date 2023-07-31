@@ -1,5 +1,5 @@
 
-A simple endless test to reaction speed game!
+A simple endless test to reaction speed game, made for the CPSC210 term project!
 
 This project is a **2D reaction speed game**. The player will be controlling a single character to move around and dodge
 projectiles, eliminate enemies with a high speed block controlled with key input. As the game progresses, enemies
